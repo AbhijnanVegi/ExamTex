@@ -1,0 +1,4 @@
+<sample{type = numerical}{ difficulty >= 1 }{score = 1}{num = 2}>
+<sample{type = numerical}{ difficulty <= 2 }{num = 1}>
+<sample{type = numerical}{score = 1}>
+<sample{type = numerical}{num = 3}>
