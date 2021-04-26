@@ -1,0 +1,29 @@
+<sample>
+{type = mcq}
+{difficulty >= 0}
+{difficulty <= 2}
+{number = 2}
+
+<sample>
+{type = mcq}
+{difficulty >= 2}
+{difficulty <= 4}
+{number = 2}
+
+<sample>
+{type = mcq}
+{difficulty >= 4}
+{difficulty <= 6}
+{number = 3}
+
+<sample>
+{type = mcq}
+{difficulty >= 6}
+{difficulty <= 8}
+{number = 2}
+
+<sample>
+{type = mcq}
+{difficulty >= 8}
+{difficulty <= 8}
+{number = 1}

@@ -1,0 +1,21 @@
+Answer keys(MCQs)
+
+A.1) B)Deque
+
+A.2) A)A+B*C 
+
+A.3) B)Stack follows FIFO
+
+A.4) B)0
+
+A.5) C)O(n)
+
+A.6) D)O(logn)
+
+A.7) B)Delete an element
+
+A.8) C)Deletion is easier
+
+A.9) C)θ(m + n)
+
+A.10) C)25,14,16,13,10,8,12

@@ -1,0 +1,260 @@
+<question
+{type = mcq}
+{difficulty = 2}
+{text = What describes the running time of an algorithm}
+{opt = Asymptotic Notation : Time complexity : Performance Analysis : None of these}
+{ans = Asymptotic Notation}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = A linear data structure in which insertion and deletion operations can be performed from both the ends is}
+{opt = Queue : Deque : Priority queue : Circular queue}
+{ans = Deque}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = In object oriented programming the wrapping of the data and operations into a single unit is known as}
+{opt = Data abstraction : Data Encapsulation : Polymorphism : Inheritance}
+{ans = Data Encapsulation}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = A preprocessor directive is}
+{opt = A message from compiler to programmer : A message from compiler to the Linker : A message from compiler to preprocessor : A message from compiler to microprocessor}
+{ans = A message from compiler to preprocessor}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = Which one of the following techniques is not used in the Binary tree?}
+{opt = Randomized traversal: Preorder traversal : Postorder traversal : Inorder traversal}
+{ans = Randomized traversal}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text =  Which of the following is not a valid identifier?}
+{opt = _examveda : 1examveda : exam_veda : examveda1}
+{ans = 1examveda}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = Which of the following options is not true about the Binary Search tree?}
+{opt = The value of the left child should be less than the root node : The value of the right child should be greater than the root node. : The left and right sub trees should also be a binary search tree : None of the above}
+{ans = None of the above}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = If there's no base criteria in a recursive program, the program will }
+{opt = not be executed. : execute until all conditions match. : execute infinitely. : obtain progressive approach.}
+{ans = execute infinitely.}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = We use theta notation for}
+{opt = Worst case : Average case : Best case : None of these}
+{ans = Average case}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = Which of the following correctly declares an array?}
+{opt = int A[20]; : int A; : A{20}; : array A[20];}
+{ans = int A[20];}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text = Which of the following is the infix expression?}
+{opt = A+B*C : +A*BC : ABC+* : None of the above}
+{ans = A+B*C}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text =  C is _______ type of programming language.?}
+{opt = Object Oriented : Procedural : Bit level language : Functional}
+{ans = Procedural}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 2}
+{text =  Which of the following is not a reserved keyword for C?}
+{opt = auto : case : main : default : register}
+{ans = main}
+{score = 1}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text =  C language was invented to develop which Operating System.?}
+{opt = Android : Linux : Ubuntu : Unix}
+{ans = Unix}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text =  C Language was developed at _______ ?}
+{opt = AT & T's Bell Laboratories of USA in 1972 : AT and Ts Bell Laboratories of USA in 1970 : Sun Microsystems in 1973 : Cambridge University in 1972}
+{ans = AT & T's Bell Laboratories of USA in 1972}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text = Which data structure is required to convert the infix to prefix notation?}
+{opt = Stack : Linked list : Binary tree : Queue}
+{ans = Stack}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text = Which of the following is not the correct statement for a stack data structure?}
+{opt = Arrays can be used to implement the stack : Stack follows FIFO : Elements are stored in a sequential manner : Top of the stack contains the last inserted element}
+{ans = Stack follows FIFO}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text = Which one of the following is not the application of the Queue data structure?}
+{opt = Resource shared between various systems : Data is transferred asynchronously : Load balancing : Balancing of symbols}
+{ans = Balancing of symbols}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text = In a circular queue implementation using array of size 5, the array index starts with 0 where front and rear values are 3 and 4 respectively. Determine the array index at which the insertion of the next element will take place.}
+{opt = 5 : 0 : 1 : 2}
+{ans = 0}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text = Which of the following is the time complexity to search an element in the linked list?}
+{opt = O(1) : O(n) : O(logn) : O(nlogn)}
+{ans = O(n)}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 4}
+{text = Which of the following statement is not true about the doubly linked list?}
+{opt = We can traverse in both the directions. : It requires extra space : Implementation of doubly linked list is easier than the singly linked list : It stores the addresses of the next and the previous node}
+{ans = It requires extra space}
+{score = 2}
+>
+
+<question
+{type = mcq}
+{difficulty = 6}
+{text = Which of the following operations is not O(1) for an array of sorted data. You may assume that array elements are distinct.}
+{opt = Find the ith largest element : Delete an element : Find the ith smallest element : All of the above}
+{ans = Delete an element}
+{score = 3}
+>
+
+<question
+{type = mcq}
+{difficulty = 6}
+{text = An advantage of chained hash table (external hashing) over the open addressing scheme is}
+{opt = Worst case complexity of search operations is less : Space used is less : Deletion is easier : None of the above}
+{ans = Deletion is easier}
+{score = 3}
+>
+
+<question
+{type = mcq}
+{difficulty = 6}
+{text = The minimum number of comparisons required to determine if an integer appears more than n/2 times in a sorted array of n integers is}
+{opt = O(n) : O(1) : O(nlogn) : O(logn)}
+{ans = O(logn)}
+{score = 3}
+>
+
+<question
+{type = mcq}
+{difficulty = 6}
+{text = In the Deque implementation using singly linked list, what would be the time complexity of deleting an element from the rear end?}
+{opt = O(1) : O(n^2) : O(n) : O(nlogn)}
+{ans = O(n)}
+{score = 3}
+>
+
+<question
+{type = mcq}
+{difficulty = 8}
+{text = Consider a hash table with 100 slots. Collisions are resolved using chaining. Assuming simple uniform hashing, what is the probability that the first 3 slots are unfilled after the first 3 insertions?}
+{opt = (97 × 97 × 97)/100^3 : (99 × 98 × 97)/100^3 : (97 × 96 × 95)/100^3 : (97 × 96 × 95)/(3! × 100^3)}
+{ans = (97 × 97 × 97)/100^3}
+{score = 4}
+>
+
+<question
+{type = mcq}
+{difficulty = 8}
+{text = A hash function h defined h(key)=key mod 7, with linear probing, is used to insert the keys 44, 45, 79, 55, 91, 18, 63 into a table indexed from 0 to 6. What will be the location of key 18 ?}
+{opt = 3 : 4 : 5 : 6}
+{ans = 5}
+{score = 4}
+>
+
+<question
+{type = mcq}
+{difficulty = 8}
+{text = The most efficient algorithm for finding the number of connected components in an undirected graph on n vertices and m edges has time complexity.}
+{opt = θ(n) : θ(m) : θ(m + n) : θ(mn)}
+{ans = θ(m + n)}
+{score = 4}
+>
+
+<question
+{type = mcq}
+{difficulty = 8}
+{text = Consider a binary max-heap implemented using an array. Which one of the following array represents a binary max-heap?}
+{opt = 25,12,16,13,10,14,8 : 25,12,16,13,10,8,14 : 25,14,16,13,10,8,12 : 25,14,12,13,10,8,16}
+{ans = 25,14,16,13,10,8,12}
+{score = 4}
+>
