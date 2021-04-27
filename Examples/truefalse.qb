@@ -1,7 +1,7 @@
 <question
 {type = truefalse}
 {text = Queue and Stack are the linear data structures}
-{difficulty = 3
+{difficulty = 3}
 {opt = true/false}
 {ans = true}
 {score = 2}>
