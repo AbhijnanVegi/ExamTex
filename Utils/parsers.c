@@ -46,7 +46,7 @@ void parseType(FILE *fp, char dest[])
     }
 }
 
-void parseArgument(FILE *fp, char parameter[], char value[])
+int parseArgument(FILE *fp, char parameter[], char value[])
 {
     //Reads the parameter and its value, and stores them in the given array
     char c;               //For storing character read
@@ -64,7 +64,7 @@ void parseArgument(FILE *fp, char parameter[], char value[])
         {
             strcpy(parameter, "NULL"); //return NULL in both if missing argument
             strcpy(value, "NULL");
-            return;
+            return 0;
         }
 
         if (c != ' ' && c != '\n') //Unexpected character
@@ -144,4 +144,5 @@ void parseArgument(FILE *fp, char parameter[], char value[])
         if (c == '\n')
             lineNumber++;
     }
+    return 1;
 }
