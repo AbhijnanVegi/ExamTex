@@ -7,7 +7,7 @@
 
 int isSyntax(char c)
 {
-    return (c == '<' || c == '>' || c == '=' || c == '{' || c == '}');
+    return (c == '<' || c == '>' || c == '=' || c == '{' || c == '}' || c == ':');
 }
 
 void raiseSyntaxError(char c)
@@ -16,13 +16,26 @@ void raiseSyntaxError(char c)
     exit(1);
 }
 
-void parseType(FILE *fp, char dest[])
+int parseType(FILE *fp, char dest[])
 {
     //Reads the type of block,i.e, question and sample and stores it
     //in the char array passed in
     char c;              //for storing the character read
     flag inWord = false; //Flags if any character's been read
     int index = 0;       //Index for iterating over dest[] to store characters
+    while ((c = fgetc(fp)) != '<') //Move cursor to the start of argument
+    {
+        if (c == EOF)//EOF
+        {
+            return 0;
+        }
+        else if (c != ' ' && c != '\n') //Unexpected character
+        {
+            raiseSyntaxError(c);
+        }
+        if (c == '\n')
+            lineNumber++;
+    }
     while ((c = fgetc(fp)))
     {
         if (!(isSyntax(c)) && !(c == ' ' || c == '{' || c == '\n')) //Check if given character is valid
@@ -44,6 +57,7 @@ void parseType(FILE *fp, char dest[])
         if (c == '\n')
             lineNumber++;
     }
+    return 1;
 }
 
 int parseArgument(FILE *fp, char parameter[], char value[])
@@ -62,8 +76,6 @@ int parseArgument(FILE *fp, char parameter[], char value[])
         }
         else if (c == '>') //Couldn't find a '{', No argument to read
         {
-            strcpy(parameter, "NULL"); //return NULL in both if missing argument
-            strcpy(value, "NULL");
             return 0;
         }
 
@@ -119,7 +131,7 @@ int parseArgument(FILE *fp, char parameter[], char value[])
             fseek(fp, -1L, SEEK_CUR);
             break;
         }
-        else if (!escape && isSyntax(c)) //Unescaped syntax character raises error
+        else if (!escape && isSyntax(c) && c!=':') //Unescaped syntax character raises error
         {
             raiseSyntaxError(c);
         }
@@ -127,18 +139,16 @@ int parseArgument(FILE *fp, char parameter[], char value[])
         {
             escape = true;
             inVal = true;
-            continue;
         }
         else if (!(inVal) && (c == ' ' || c == '\n')) //Ignore all the spaces and newlines before first accepted character
         {
             continue;
         }
-        else
-        {
-            value[index] = c; // The character is valid Thus fill it
-            inVal = true;
-            index++;
-        }
+        
+        value[index] = c; // The character is valid Thus fill it
+        inVal = true;
+        index++;
+        
         if (escape) //Toggle escape if true
             escape = false;
         if (c == '\n')

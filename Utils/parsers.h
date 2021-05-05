@@ -14,7 +14,7 @@
 typedef bool flag;
 
 int isSyntax(char c);
-void parseType(FILE *fp,char dest[]);
+int parseType(FILE *fp,char dest[]);
 int parseArgument(FILE *fp,char parameter[],char value[]);
 void raiseSyntaxError(char c);
 #endif
