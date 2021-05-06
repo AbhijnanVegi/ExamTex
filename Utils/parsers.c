@@ -1,5 +1,6 @@
 #include "parsers.h"
 #include "lineNumber.h"
+#include "../vector/vec.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -16,16 +17,17 @@ void raiseSyntaxError(char c)
     exit(1);
 }
 
-int parseType(FILE *fp, char dest[])
+int parseType(FILE *fp, vector *dest)
 {
     //Reads the type of block,i.e, question and sample and stores it
     //in the char array passed in
-    char c;              //for storing the character read
-    flag inWord = false; //Flags if any character's been read
-    int index = 0;       //Index for iterating over dest[] to store characters
+    char c;
+    char *x;                       //for storing the character read
+    flag inWord = false;           //Flags if any character's been read
+    int index = 0;                 //Index for iterating over dest[] to store characters
     while ((c = fgetc(fp)) != '<') //Move cursor to the start of argument
     {
-        if (c == EOF)//EOF
+        if (c == EOF) //EOF
         {
             return 0;
         }
@@ -41,8 +43,10 @@ int parseType(FILE *fp, char dest[])
         if (!(isSyntax(c)) && !(c == ' ' || c == '{' || c == '\n')) //Check if given character is valid
         {
             inWord = true;
-            dest[index] = c;
-            index++;
+            *x = c;
+            add_string(dest, x);
+            //dest[index] = c;
+            // index++;
         }
         else if (isSyntax(c) && c != '{') //Character part of syntax  and not '{'
         {
@@ -50,7 +54,9 @@ int parseType(FILE *fp, char dest[])
         }
         else if (inWord || c == '{') //Stop when ' ' comes after word or reads '{'
         {
-            dest[index] = '\0';
+            *x = '\0';
+            add_string(dest, x);
+            // dest[index] = '\0';
             fseek(fp, -1L, SEEK_CUR); //set the cursor to prev cursor so it can be read
             break;                    //by other functions
         }
@@ -60,10 +66,11 @@ int parseType(FILE *fp, char dest[])
     return 1;
 }
 
-int parseArgument(FILE *fp, char parameter[], char value[])
+int parseArgument(FILE *fp, vector *parameter, vector *value)
 {
     //Reads the parameter and its value, and stores them in the given array
-    char c;               //For storing character read
+    char c;
+    char *x;              //For storing character read
     flag inParam = false; //Flags if parameter is being/been read
     flag inVal = false;   //Flags if value is being/been read
     flag escape = false;
@@ -91,8 +98,10 @@ int parseArgument(FILE *fp, char parameter[], char value[])
         if (!(isSyntax(c)) && !(c == ' ' || c == '\n')) //Fillin if valid char
         {
             inParam = true;
-            parameter[index] = c;
-            index++;
+            *x = c;
+            add_string(parameter, x);
+            // parameter[index] = c;
+            // index++;
         }
         else if (isSyntax(c) && c != '=') //Raise syntax error if character is not '='
         {
@@ -100,7 +109,9 @@ int parseArgument(FILE *fp, char parameter[], char value[])
         }
         else if (inParam) //space after parameter
         {
-            parameter[index] = '\0';
+            *x = '\0';
+            add_string(parameter, x);
+            // parameter[index] = '\0';
             fseek(fp, -1L, SEEK_CUR);
             break;
         }
@@ -127,11 +138,13 @@ int parseArgument(FILE *fp, char parameter[], char value[])
     {
         if (!escape && c == '}') //Unescaped '}' finishes the argument
         {
-            value[index] = '\0';
+            // value[index] = '\0';
+            *x = '\0';
+            add_string(value, x);
             fseek(fp, -1L, SEEK_CUR);
             break;
         }
-        else if (!escape && isSyntax(c) && c!=':') //Unescaped syntax character raises error
+        else if (!escape && isSyntax(c) && c != ':') //Unescaped syntax character raises error
         {
             raiseSyntaxError(c);
         }
@@ -144,11 +157,13 @@ int parseArgument(FILE *fp, char parameter[], char value[])
         {
             continue;
         }
-        
-        value[index] = c; // The character is valid Thus fill it
+
+        *x = c;
+        add_string(value, x);
+        //value[index] = c; // The character is valid Thus fill it
         inVal = true;
-        index++;
-        
+        //index++;
+
         if (escape) //Toggle escape if true
             escape = false;
         if (c == '\n')
