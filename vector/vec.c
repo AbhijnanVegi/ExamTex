@@ -1,7 +1,7 @@
 #include "vec.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 vector allocate(int elementType, unsigned int dim)
 {
     vector ret;
@@ -15,6 +15,10 @@ vector allocate(int elementType, unsigned int dim)
     else if (elementType == NODE)
     {
         ret.u.nodeElems = (node *)malloc(dim * sizeof(node));
+    }
+    else if (elementType == STRING)
+    {
+        ret.u.string = (char *)malloc(dim * sizeof(char));
     }
     return ret;
 }
@@ -45,6 +49,12 @@ vector *reallocate(vector *v, int x)
     else if (v->elementType == NODE)
     {
         v->u.nodeElems = (node *)realloc(v->u.nodeElems, x * sizeof(node));
+        v->dim = x;
+        return v;
+    }
+    else if (v->elementType == STRING)
+    {
+        v->u.string = (char *)realloc(v->u.string, x);
         v->dim = x;
         return v;
     }
@@ -85,4 +95,31 @@ parameterUnion front(vector v)
 unsigned int size(vector *v)
 {
     return v->last;
+}
+
+void add_string(vector *v, char *c)
+{
+    if (v->elementType == STRING)
+    {
+        if (v->dim <= v->last + strlen(c) + 1)
+            v = reallocate(v, v->dim + strlen(c) + 1);
+        strcpy(&v->u.string[v->last],c);
+        v->last += strlen(  c);
+    }
+}
+
+void cpy_string(vector *v, char *c)
+{
+    if (v->elementType == STRING)
+    {
+        if (v->dim <= strlen(c) + 1)
+            v = reallocate(v, strlen(c) + 10);
+        strcpy(&v->u.string[0], c);
+        v->last += strlen(c);
+    }
+}
+char *return_string(vector *str)
+{
+    if (str->elementType == STRING)
+        return &str->u.string[0];
 }

@@ -15,7 +15,7 @@ Functions include basic operations for dynamic arrays
 
 #define NODE 0
 #define CHARSTACK 1
-
+#define STRING 2
 typedef struct
 {
     char ch;
@@ -28,13 +28,14 @@ typedef struct
     float diff;
     int id; // line no
     float score;
-} node;// change ds from pratyush branch
+} node; 
 
 
 typedef union
 {
     node *nodeElems;
     charStack *stackElems;
+    char *string;
 } vectorUnion;
 typedef union
 {
@@ -61,5 +62,9 @@ vector *reallocate(vector *v, int x); //reallocates memory from
 void pop_back(vector *v); //pops the last element
 
 unsigned int size(vector *v); // returns number of elements in the vector
+                              
+void add_string(vector *str, char*c);
 
+void cpy_string(vector *s, char* c);
+char *return_string(vector *str);
 #endif
