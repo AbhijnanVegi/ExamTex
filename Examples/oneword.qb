@@ -45,3 +45,115 @@
     {text = The orientation of atomic orbitals depends upon their _______ }
     {score = 4.6}
     {ans = magnetic quantum number}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = Who invented C Language _______ }
+    {score =}
+    {ans = Dennis Ritchie}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = C Language is a successor to _______ language }
+    {score =}
+    {ans = B Language}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = C is a _______ level language }
+    {score =}
+    {ans = High Level}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = C language was invented in _______ laboratories }
+    {score =}
+    {ans = AT&T Bell Labs}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text =  C language was invented to develop _______ Operating System}
+    {score =}
+    {ans = Unix}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = C language was invented in the year _______ }
+    {score =}
+    {ans = 1972}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = People who work together _______ }
+    {score =}
+    {ans = Colleagues}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = One who goes on foot _______}
+    {score =}
+    {ans = Pedestrian}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = One who can speak two languages _______}
+    {score =}
+    {ans = Bilingual}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = Word with the same meaning _______}
+    {score =}
+    {ans = Synonyms}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = The person who works for free _______ }
+    {score =}
+    {ans = Volunteer}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = One who speaks less _______ }
+    {score =}
+    {ans = Reticent}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = One who talk in sleep _______}
+    {score =}
+    {ans = Somniloquy}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = }
+    {text = One who knows everything _______ }
+    {score =}
+    {ans = Omniscient}>
