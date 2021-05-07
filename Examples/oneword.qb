@@ -97,9 +97,9 @@
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 1}
     {text = People who work together _______ }
-    {score =}
+    {score = 1.9}
     {ans = Colleagues}>
     
     
