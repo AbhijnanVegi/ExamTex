@@ -1,0 +1,47 @@
+    <question
+    {type = single}
+    {difficulty = 4}
+    {text = C is a _______ language}
+    {score = 3}                             
+    {ans = Functional}>
+    
+    
+     <question
+    {type = single}
+    {difficulty = 3}
+    {text = On the Origin of species was written by _______ }
+    {score = 2.5}
+    {ans = Charles Darwin}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = 3}
+    {text = The symbol '//}' represents _______}
+    {score = 3.5}
+    {ans = right brace}>
+    
+    
+    
+    <question
+    {type = single}
+    {difficulty = 1}
+    {text = The brackets are represented by the symbol _______}
+    {score = 4}
+    {ans = [] }>
+    
+    
+    <question
+    {type = single}
+    {difficulty = 2}
+    {text = cow //: calf //://: horse //: _______}
+    {score = 5}
+    {ans=foal}>
+    
+    
+    <question
+    {type = single}
+    {difficulty = 4}
+    {text = The orientation of atomic orbitals depends upon their _______ }
+    {score = 4.6}
+    {ans = magnetic quantum number}>
