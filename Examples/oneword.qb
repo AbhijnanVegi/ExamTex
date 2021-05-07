@@ -49,49 +49,49 @@
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 2}
     {text = Who invented C Language _______ }
-    {score =}
+    {score = 3}
     {ans = Dennis Ritchie}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 5}
     {text = C Language is a successor to _______ language }
-    {score =}
+    {score = 4}
     {ans = B Language}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 4}
     {text = C is a _______ level language }
-    {score =}
+    {score = 3}
     {ans = High Level}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 8}
     {text = C language was invented in _______ laboratories }
-    {score =}
+    {score = 5}
     {ans = AT&T Bell Labs}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 7}
     {text =  C language was invented to develop _______ Operating System}
-    {score =}
+    {score = 5}
     {ans = Unix}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 3}
     {text = C language was invented in the year _______ }
-    {score =}
+    {score = 2}
     {ans = 1972}>
     
     
@@ -105,55 +105,55 @@
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 1}
     {text = One who goes on foot _______}
-    {score =}
+    {score = 2}
     {ans = Pedestrian}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 2}
     {text = One who can speak two languages _______}
-    {score =}
+    {score = 2.7} 
     {ans = Bilingual}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 1}
     {text = Word with the same meaning _______}
-    {score =}
+    {score = 3}
     {ans = Synonyms}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 5}
     {text = The person who works for free _______ }
-    {score =}
+    {score = 4} 
     {ans = Volunteer}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 8}
     {text = One who speaks less _______ }
-    {score =}
+    {score = 6} 
     {ans = Reticent}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 5}
     {text = One who talk in sleep _______}
-    {score =}
+    {score = 6}
     {ans = Somniloquy}>
     
     
     <question
     {type = single}
-    {difficulty = }
+    {difficulty = 6}
     {text = One who knows everything _______ }
-    {score =}
+    {score = 4.4}
     {ans = Omniscient}>
