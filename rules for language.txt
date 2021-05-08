@@ -1,0 +1,85 @@
+/**********************************************************************
+********* Made By - Shreyansh Agarwal *********************************
+***********************************************************************
+
+
+Rules for our language Examtex
+
+Question Bank file :-
+	
+	- Each question needs to be represented as a block of text in the folowing format
+	- Each question starts with the <question ...  syntax
+	- Each block will end with the left angular bracket '>' (without qutoes).
+	- After that each question has a bunch of attributes
+	- The first attribute should always be "type" written in {type = <question type>}
+	  format
+	Rules for each type :-
+		- MCQ 
+		   - Only mcq represents single correct mcq's.
+		   - Syntax "mcq" (without quotes)
+		   - attribuutes for mcq
+		   		text: The actual question in plain text.Format {text = <question text>}
+		   		opt : The optinons for the question (max 8). Format {opt = <opt1> : <opt2> : ...}
+		    	              each option will be separated by a colon " : ".
+		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
+		   	 	             Format {difficulty = <integer>}
+		   		ans : The answer to the question it should be an option from the opt tag or else 
+		   	              it will flag an error. Format {ans = <opt> } . Note you have to type the whole 
+		   	              option again.
+		   		score : The maximum marks for the question.
+		 - Multiple correct mcq
+		   	- It represents mcq's with one or more correct options 
+		   	- Syntax "mulmcq" (without quotes"
+		   	- attributes for mulmcq  
+		   		text: The actual question in plain text.Format {text = <question text>}
+		   		opt : The optinons for the question (max 8). Format {opt = <opt1> : <opt2> : ...}
+		    	      each option will be separated by a colon " : ".
+		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
+		   	 	             Format {difficulty = <integer>}
+		   		ans : The answer to the question it should be an option from the opt tag or else 
+		   	          it will flag an error. Format {ans = <opt> } . Note you have to type the whole 
+		   	          option again.
+		   	    score : The maximum marks for the question.
+		  - One word answer
+		     - It represents questions with one word answers 
+		     - Syntax "single"
+		     - attributes for single
+		     	text: The actual question in plain text.Format {text = <question text>}
+		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
+		   	 	     Format {difficulty = <integer>}
+		   		ans : The ans is either one word or a small sentence in plain text. Format {ans = <ans>}
+		   	    score : The maximum marks for the question.
+		   - Integer type 
+		     - It represents questions with an integer answer
+		     - Syntax "integer"
+		     - attributes for integer
+		     	text: The actual question in plain text.Format {text = <question text>}
+		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
+		   	 	     Format {difficulty = <integer>}
+		   		ans : The ans must only be an integer. Format {ans = <integer>}
+		   	    score : The maximum marks for the question.
+		    - True/False
+		      - It represents questions with true/false answers
+		      - Syntax "truefalse"
+		      - attributes for truefalse
+		      	 text: The actual question in plain text.Format {text = <question text>}
+		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
+		   	 	     Format {difficulty = <integer>}
+		   		ans : The ans must be either "true" or "false". Format {ans = <true/false>}
+		   	    score : The maximum marks for the question. 
+	Note: 
+		There is no need to use quotes (" , ') to write anything.
+		if you wish to use } or : in your question or option or answer please use \} and \: for the same.
+		If any required attribute is not present for a particular question type ot will be flagged invalid.
+		The first tag for each question should always be "type", the other tags can be in any order.
+
+
+Question Paper file :-
+
+	- Each question requirment will be written as a block of text.
+	- Each bolck starts with <sample>.
+	- It is followed by attributes.
+	- The first attribute is always type. Format {type = <question type>}
+	- The second and third attribute are difficulty one being the lower bound and the other being the upper bound.
+	  Format {difficulty >= <integer>} {difficulty <= <integer>}. Note only one of the bounds for difficulty can be used as well.
+	- The third attribute is the number of question required. Format {number = <integer>}.
