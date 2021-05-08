@@ -29,6 +29,8 @@ int main()
     cpy_string(&str, &c[0]);
     //str = "lo"
     char *x = return_string(&str);
+    x[i];
+    // str.u.string[i]
     //x[0] = 'l' and so on x can be used for random acces of the string
     //x = "lo"
     //Please don't use push_back, pop_back, back and front functions for string

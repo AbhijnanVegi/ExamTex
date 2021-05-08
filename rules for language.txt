@@ -20,12 +20,12 @@ Question Bank file :-
 		   - attribuutes for mcq
 		   		text: The actual question in plain text.Format {text = <question text>}
 		   		opt : The optinons for the question (max 8). Format {opt = <opt1> : <opt2> : ...}
-		    	      each option will be separated by a colon " : ".
+		    	              each option will be separated by a colon " : ".
 		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
-		   	 	     Format {difficulty = <integer>}
+		   	 	             Format {difficulty = <integer>}
 		   		ans : The answer to the question it should be an option from the opt tag or else 
-		   	        it will flag an error. Format {ans = <opt> } . Note you have to type the whole 
-		   	        option again.
+		   	              it will flag an error. Format {ans = <opt> } . Note you have to type the whole 
+		   	              option again.
 		   		score : The maximum marks for the question.
 		 - Multiple correct mcq
 		   	- It represents mcq's with one or more correct options 
@@ -35,10 +35,10 @@ Question Bank file :-
 		   		opt : The optinons for the question (max 8). Format {opt = <opt1> : <opt2> : ...}
 		    	      each option will be separated by a colon " : ".
 		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
-		   	 	     Format {difficulty = <integer>}
+		   	 	             Format {difficulty = <integer>}
 		   		ans : The answer to the question it should be an option from the opt tag or else 
-		   	        it will flag an error. Format {ans = <opt> } . Note you have to type the whole 
-		   	        option again.
+		   	          it will flag an error. Format {ans = <opt> } . Note you have to type the whole 
+		   	          option again.
 		   	    score : The maximum marks for the question.
 		  - One word answer
 		     - It represents questions with one word answers 
