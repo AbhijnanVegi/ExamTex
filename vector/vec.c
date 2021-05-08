@@ -97,14 +97,13 @@ unsigned int size(vector *v)
     return v->last;
 }
 
-void add_string(vector *v, char *c)
+void add_string(vector *v, char c)
 {
     if (v->elementType == STRING)
     {
-        if (v->dim <= v->last + strlen(c) + 1)
-            v = reallocate(v, v->dim + strlen(c) + 1);
-        strcpy(&v->u.string[v->last],c);
-        v->last += strlen(  c);
+        if (v->dim <= v->last + 2 + 1)
+            v = reallocate(v, v->dim + 2 + 1);
+        v->u.string[v->last++] = c;
     }
 }
 
@@ -122,4 +121,19 @@ char *return_string(vector *str)
 {
     if (str->elementType == STRING)
         return &str->u.string[0];
+}
+void deletevector(vector *v)
+{
+    if (v->elementType == CHARSTACK)
+    {
+        free(v->u.stackElems);
+    }
+    else if (v->elementType == NODE)
+    {
+        free(v->u.nodeElems);
+    }
+    else if (v->elementType == STRING)
+    {
+        free(v->u.string);
+    }
 }
