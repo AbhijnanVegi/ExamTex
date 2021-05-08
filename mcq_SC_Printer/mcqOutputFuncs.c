@@ -11,14 +11,20 @@ void printSingleCorrect_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
 {
     double score;
 
-    char text[100]; // will store the question text
-    char param[100]; // will store different parameters one vby one i.e. LHS of = 
-    char value[300]; // will store the valus of different parameters i.e. RHS of =
-    char options[4][1000]; // will store 4 different options of the question...
+    char *param; // will store different parameters one vby one i.e. LHS of =
+    char *value; // will store the valus of different parameters i.e. RHS of =
+
+    char text[100];          // will store the question text
+    char options[4][1000];   // will store 4 different options of the question...
     char correctOption[100]; // will store the corrcet option for a particular question...
 
-    while (parseArgument(qb, param, value))
+    char *p;
+    parseType(qb, &p);
+
+    int n = 6;
+    while (n--)
     {
+        parseArgument(qb, &param, &value);
         if (strcmp(param, "text") == 0)
         {
             clean(value);
@@ -26,7 +32,7 @@ void printSingleCorrect_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
             strcpy(text, value);
         }
         else if (strcmp(param, "score") == 0)
-        {   
+        {
             // store the max score(double)
             score = atof(value);
         }
@@ -37,7 +43,7 @@ void printSingleCorrect_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
             strcpy(correctOption, value);
         }
         else if (strcmp(param, "opt") == 0)
-        {   
+        {
             // Firstly separe the different options present int the char value[] array
             // and then 1 by 1 store them in 4 different char arrays...
             int i = 0;
