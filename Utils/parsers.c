@@ -13,7 +13,7 @@ int isSyntax(char c)
 
 void raiseSyntaxError(char c)
 {
-    printf("Unexpected character '%c' %d at line : %d", c, c, lineNumber);
+    printf("Unexpected character '%c' at line : %d", c, lineNumber);
     exit(1);
 }
 
