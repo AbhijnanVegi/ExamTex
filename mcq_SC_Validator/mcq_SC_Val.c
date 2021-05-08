@@ -14,9 +14,9 @@
 void validateSingleCorrect_MCQ(FILE *fp);
 {
     // Declaring arrays to store parameters and values
-
-    char param[20];  // Stores the value of LHS of the = sign
-    char value[100]; // Stores the value of RHS of the = sign
+    // Using pointers...
+    char **param; // Stores the value of LHS of the = sign
+    char **value; // Stores the value of RHS of the = sign
 
     int parametersRead = 0;
     int numberOfParametersRequired = 5;
@@ -62,7 +62,7 @@ void validateSingleCorrect_MCQ(FILE *fp);
         {
             newnode.nd.id = ftell(fp);
         }
-        if (strcmp(param, "text") == 0)
+        if (strcmp(*param, "text") == 0)
         {
             //Do nothing as no validation is required for text
             if (isParameterRead[Text_Idx] == false)
@@ -76,10 +76,14 @@ void validateSingleCorrect_MCQ(FILE *fp);
             {
                 // Print an Error message and exit
                 printf("Error on line number : %d : Duplicate parameter \"text\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
-        else if (strcmp(param, "ans") == 0)
+        else if (strcmp(*param, "ans") == 0)
         {
             if (isParameterRead[Ans_Idx] == false)
             {
@@ -95,10 +99,14 @@ void validateSingleCorrect_MCQ(FILE *fp);
             else //Parameter already read, raise duplicate error
             {
                 printf("Error on line number : %d : Duplicate parameter \"ans\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
-        else if (strcmp(param, "difficulty") == 0)
+        else if (strcmp(*param, "difficulty") == 0)
         {
             if (isParameterRead[Difficulty_Idx] == false)
             {
@@ -116,10 +124,14 @@ void validateSingleCorrect_MCQ(FILE *fp);
             else //Parameter already read, raise duplicate error
             {
                 printf("Error on line number %d: Duplicate parameter \"difficulty\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
-        else if (strcmp(param, "score") == 0)
+        else if (strcmp(*param, "score") == 0)
         {
             if (isParameterRead[Score_Idx] == false)
             {
@@ -137,10 +149,14 @@ void validateSingleCorrect_MCQ(FILE *fp);
             else //Parameter already read, raise duplicate error
             {
                 printf("Error on line number : %d: Duplicate parameter \"score\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
-        else if (strcmp(param, "opt") == 0)
+        else if (strcmp(*param, "opt") == 0)
         {
             if (isParameterRead[Options_Idx] == false)
             {
@@ -157,6 +173,8 @@ void validateSingleCorrect_MCQ(FILE *fp);
                 if (noOfOptions > 4)
                 {
                     printf("Error! more than 4 options used in line number %d \n", line_number);
+                    free(*param);
+                    free(*value);
                     exit(1);
                 }
                 // Read parameter
@@ -167,12 +185,18 @@ void validateSingleCorrect_MCQ(FILE *fp);
             else //Parameter already read, raise duplicate error
             {
                 printf("Error on line number : %d: Duplicate parameter \"opt\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
         else
         {
             printf("Unknown parameter '%s' on line number : %d", param, lineNumber);
+            free(*param);
+            free(*value);
             exit(1);
         }
     }
@@ -192,6 +216,10 @@ void validateSingleCorrect_MCQ(FILE *fp);
             printf("\"score\" ");
         if (!isParameterRead[OPTIONS])
             printf("\"options\" ");
+
+        free(*param);
+        free(*value);
+        exit(1);
     }
     else
     {
