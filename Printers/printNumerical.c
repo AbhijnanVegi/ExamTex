@@ -12,7 +12,7 @@ void printNumerical(FILE* qb,FILE* outputPaper, FILE* outputAnswer)
     char text[100];
     double score;
     double ans;
-    while (parseArgument(qb,param,value))
+    while (parseArgument(qb,param,value))//Get all parameter values and store them
     {
         if (strcmp(param,"text") == 0)
         {
@@ -28,8 +28,8 @@ void printNumerical(FILE* qb,FILE* outputPaper, FILE* outputAnswer)
             ans = atof(value);
         }
     }
-    fprintf(outputPaper,"%s",text);
+    fprintf(outputPaper,"%s",text);//Print questions to question paper
     fprintf(outputPaper,"\t[score : %0.1f]\n",score);
     fprintf(outputPaper,"Answer : ____\n");
-    fprintf(outputAnswer,"%0.2f",ans);
+    fprintf(outputAnswer,"%0.2f",ans);//Print answer to answer key
 }
