@@ -1,8 +1,3 @@
-/*****************************************************
- * This file is incomplete and is only here to give  *
- * idea of how the parsers should be used            *
- * ***************************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -11,10 +6,10 @@
 
 void validateNumerical(FILE *fp)
 {
-    char param[20];
+    char param[20];//Arrays to store parameters and values
     char value[100];
     int numberOfParametersRequired = 4;
-    int parametersRead = 0;
+    int parametersRead = 0;//Number of parameters read
     enum parameters
     {
         TEXT,
@@ -22,12 +17,12 @@ void validateNumerical(FILE *fp)
         DIFFICULTY,
         SCORE
     };
-    bool isParameterRead[4];
+    bool isParameterRead[4];//Array to store if aprticular parameter has been read
     isParameterRead[TEXT] = false;
     isParameterRead[ANS] = false;
     isParameterRead[DIFFICULTY] = false;
     isParameterRead[SCORE] = false;
-    double ans;
+    double ans;//floats to store ans, diff, score
     double difficulty;
     double score;
     while (parseArgument(fp, param, value))
@@ -41,7 +36,7 @@ void validateNumerical(FILE *fp)
                 isParameterRead[TEXT] = true;
                 parametersRead++;
             }
-            else
+            else//Parameter already read, raise duplicate error
             {
                 printf("Error on line number : %d : Duplicate parameter \"text\"", lineNumber);
                 exit(1);
@@ -106,9 +101,9 @@ void validateNumerical(FILE *fp)
             exit(1);
         }
     }
-    if (parametersRead!=numberOfParametersRequired)
+    if (parametersRead!=numberOfParametersRequired) //Less than required parameters
     {
-        printf("Error on line number : %d: Missing parameters : ",lineNumber);
+        printf("Error on line number : %d: Missing parameters : ",lineNumber);//print all missing parameters
         if (!isParameterRead[TEXT])printf("\"text\" ");
         if (!isParameterRead[ANS])printf("\"ans\" ");
         if (!isParameterRead[DIFFICULTY])printf("\"diffuculty\" ");
