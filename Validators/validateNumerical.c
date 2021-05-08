@@ -87,6 +87,7 @@ void validateNumerical(FILE *fp)
                     printf("Error on line number : %d, Score must be decimal", lineNumber);
                     exit(1);
                 }
+                isParameterRead[SCORE] = 1;
                 parametersRead++;
             }
             else
