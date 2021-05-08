@@ -29,7 +29,7 @@ void printNumerical(FILE* qb,FILE* outputPaper, FILE* outputAnswer)
         }
     }
     fprintf(outputPaper,"%s",text);
-    fprintf(outputPaper,"\t[score : %f]\n",score);
+    fprintf(outputPaper,"\t[score : %0.1f]\n",score);
     fprintf(outputPaper,"Answer : ____\n");
-    fprintf(outputAnswer,"%f",ans);
+    fprintf(outputAnswer,"%0.2f",ans);
 }
