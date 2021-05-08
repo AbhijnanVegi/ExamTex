@@ -22,13 +22,13 @@ void printNumerical(FILE* qb,FILE* outputPaper, FILE* outputAnswer)
         }
         else if (strcmp(*param,"score") == 0)
         {
-            score = atof(value);
+            score = atof(*value);
             free(*param);
             free(*value);
         }
         else if (strcmp(*param,"answer") == 0)
         {
-            ans = atof(value);
+            ans = atof(*value);
             free(*param);
             free(*value);
         }
@@ -37,5 +37,5 @@ void printNumerical(FILE* qb,FILE* outputPaper, FILE* outputAnswer)
     fprintf(outputPaper,"\t[score : %0.1f]\n",score);
     fprintf(outputPaper,"Answer : ____\n");
     fprintf(outputAnswer,"%0.2f",ans);//Print answer to answer key
-    free(*text);
+    free(text);
 }
