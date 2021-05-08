@@ -6,8 +6,8 @@
 
 void validateNumerical(FILE *fp)
 {
-    char param[20];//Arrays to store parameters and values
-    char value[100];
+    char **param;//To store pointer to char array
+    char **value;
     int numberOfParametersRequired = 4;
     int parametersRead = 0;//Number of parameters read
     enum parameters
@@ -27,7 +27,7 @@ void validateNumerical(FILE *fp)
     double score;
     while (parseArgument(fp, param, value))
     {
-        if (strcmp(param, "text") == 0)
+        if (strcmp(*param, "text") == 0)
         {
             //Do nothing as no validation is required for text
             //Save in vector
@@ -42,11 +42,11 @@ void validateNumerical(FILE *fp)
                 exit(1);
             }
         }
-        else if (strcmp(param, "ans") == 0)
+        else if (strcmp(*param, "ans") == 0)
         {
             if (!isParameterRead[ANS])
             {
-                if (sscanf(value, "%lf", &ans) != 1)
+                if (sscanf(*value, "%lf", &ans) != 1)
                 {
                     printf("Error on line number %d: Answer must be decimal", lineNumber);
                     exit(1);
@@ -60,11 +60,11 @@ void validateNumerical(FILE *fp)
                 exit(1);
             }
         }
-        else if (strcmp(param, "difficulty") == 0)
+        else if (strcmp(*param, "difficulty") == 0)
         {
             if (!isParameterRead[DIFFICULTY])
             {
-                if (sscanf(value, "%lf", &difficulty) != 1)
+                if (sscanf(*value, "%lf", &difficulty) != 1)
                 {
                     printf("Error on line number : %d : Difficulty must be decimal", lineNumber);
                     exit(1);
@@ -78,11 +78,11 @@ void validateNumerical(FILE *fp)
                 exit(1);
             }
         }
-        else if (strcmp(param, "score") == 0)
+        else if (strcmp(*param, "score") == 0)
         {
             if (!isParameterRead[SCORE])
             {
-                if (sscanf(value, "%lf", &score) != 1)
+                if (sscanf(*value, "%lf", &score) != 1)
                 {
                     printf("Error on line number : %d, Score must be decimal", lineNumber);
                     exit(1);
@@ -97,7 +97,7 @@ void validateNumerical(FILE *fp)
         }
         else
         {
-            printf("Unknown parameter '%s' on line number : %d", param, lineNumber);
+            printf("Unknown parameter '%s' on line number : %d", *param, lineNumber);
             exit(1);
         }
     }
@@ -108,6 +108,7 @@ void validateNumerical(FILE *fp)
         if (!isParameterRead[ANS])printf("\"ans\" ");
         if (!isParameterRead[DIFFICULTY])printf("\"diffuculty\" ");
         if (!isParameterRead[SCORE])printf("\"score\" ");
+        exit(1);
     }
     //save the question here
 }
