@@ -39,8 +39,12 @@ void validateNumerical(FILE *fp)
             else//Parameter already read, raise duplicate error
             {
                 printf("Error on line number : %d : Duplicate parameter \"text\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
         else if (strcmp(*param, "ans") == 0)
         {
@@ -49,6 +53,8 @@ void validateNumerical(FILE *fp)
                 if (sscanf(*value, "%lf", &ans) != 1)
                 {
                     printf("Error on line number %d: Answer must be decimal", lineNumber);
+                    free(*param);
+                    free(*value);
                     exit(1);
                 }
                 isParameterRead[ANS] = true;
@@ -57,8 +63,12 @@ void validateNumerical(FILE *fp)
             else
             {
                 printf("Error on line number : %d : Duplicate parameter \"ans\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
         else if (strcmp(*param, "difficulty") == 0)
         {
@@ -67,6 +77,8 @@ void validateNumerical(FILE *fp)
                 if (sscanf(*value, "%lf", &difficulty) != 1)
                 {
                     printf("Error on line number : %d : Difficulty must be decimal", lineNumber);
+                    free(*param);
+                    free(*value);
                     exit(1);
                 }
                 isParameterRead[DIFFICULTY] = true;
@@ -75,8 +87,12 @@ void validateNumerical(FILE *fp)
             else
             {
                 printf("Error on line number %d: Duplicate parameter \"difficulty\"", lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
         else if (strcmp(*param, "score") == 0)
         {
@@ -85,6 +101,8 @@ void validateNumerical(FILE *fp)
                 if (sscanf(*value, "%lf", &score) != 1)
                 {
                     printf("Error on line number : %d, Score must be decimal", lineNumber);
+                    free(*param);
+                    free(*value);
                     exit(1);
                 }
                 isParameterRead[SCORE] = 1;
@@ -93,12 +111,18 @@ void validateNumerical(FILE *fp)
             else
             {
                 printf("Error on line number : %d: Duplicate parameter \"score\"",lineNumber);
+                free(*param);
+                free(*value);
                 exit(1);
             }
+            free(*param);
+            free(*value);
         }
         else
         {
             printf("Unknown parameter '%s' on line number : %d", *param, lineNumber);
+            free(*param);
+            free(*value);
             exit(1);
         }
     }
@@ -109,6 +133,8 @@ void validateNumerical(FILE *fp)
         if (!isParameterRead[ANS])printf("\"ans\" ");
         if (!isParameterRead[DIFFICULTY])printf("\"diffuculty\" ");
         if (!isParameterRead[SCORE])printf("\"score\" ");
+        free(*param);
+        free(*value);
         exit(1);
     }
     //save the question here
