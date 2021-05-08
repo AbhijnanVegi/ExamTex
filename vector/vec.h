@@ -63,8 +63,9 @@ void pop_back(vector *v); //pops the last element
 
 unsigned int size(vector *v); // returns number of elements in the vector
                               
-void add_string(vector *str, char*c);
+void add_string(vector *str, char c);
 
 void cpy_string(vector *s, char* c);
 char *return_string(vector *str);
+void deletevector(vector * v);
 #endif
