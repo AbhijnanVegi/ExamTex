@@ -3,6 +3,6 @@
 #include <stdio.h>
 
 void validateNumerical(FILE *fp);
-
+//Verifies if the input is valid and stores the question
 
 #endif // __VALIDATE_NUMERICAL_H_
