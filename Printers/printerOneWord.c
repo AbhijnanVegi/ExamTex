@@ -11,34 +11,34 @@
 // Parameters: qPaper - Output for question paper, finAnswer - file to store answer
 void printOneWord(FILE *fp, FILE* qPaper, FILE* finAnswer)
 {
-    char **param;
-    char **value;
+    char *param;
+    char *value;
     char *text;
     
     char *ans;
     double score;
     
-    while(parseArgument(fp,param,value))
+    while(parseArgument(fp,&param,&value))
     {
-        if(strcmp(*param,"text") == 0)
+        if(strcmp(param,"text") == 0)
         {
-            clean(*value);
-            text = *value;// Storing the "question"
-            free(*param);
-            free(*value);
+            clean(value);
+            text = value;// Storing the "question"
+            free(param);
+            free(value);
         }
-        else if (strcmp(*param,"ans") == 0)
+        else if (strcmp(param,"ans") == 0)
         {
-            clean(*value);
-            ans = *value; // Storing the "answer"
-            free(*param);
+            clean(value);
+            ans = value; // Storing the "answer"
+            free(param);
             
         }
         else if (strcmp(param,"score") == 0)
         { 
-            score = atof(*value); // Stroring the "score"
-            free(*param);
-            free(*value);
+            score = atof(value); // Stroring the "score"
+            free(param);
+            free(value);
         }        
     }
     // Output questions in proper format to question paper
