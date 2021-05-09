@@ -43,7 +43,7 @@ void readQuestionBank(FILE *qb)
                 int id = ftell(qb);
                 validateNumerical(qb, id);
             }
-            else if (strcmp(value, "") == 0)
+            else if (strcmp(value, "truefalse") == 0)
             {
                 int id = ftell(qb);
                 validateTrueFalse(qb, id);
