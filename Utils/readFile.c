@@ -37,11 +37,11 @@ void readQuestionBank(FILE *qb)
                 free(value);
                 free(type);
             }
-            /*else if (strcmp(value, "numerical") == 0)
+            else if (strcmp(value, "numerical") == 0)
             {
                 int id = ftell(qb);
-                validateNumerical(qb);
-            }*/
+                validateNumerical(qb,id);
+            }
             else
             {
                 printf("Invalid type of question at line number : %d in question bank file", lineNumber);
@@ -53,9 +53,9 @@ void readQuestionBank(FILE *qb)
 
 void readSamplePaper(FILE *sp)
 {
-    char **param;
-    char **value;
-    char **type;
+    char *param;
+    char *value;
+    char *type;
     enum parameters
     {
         TYPE,
@@ -73,22 +73,22 @@ void readSamplePaper(FILE *sp)
     char *qtype;
     double diffub, difflb;
     double num;
-    while (parseType(sp, type))
+    while (parseType(sp, &type))
     {
-        if (strcmp(*type, "sample") != 0)
+        if (strcmp(type, "sample") != 0)
         {
             printf("Expected block of type 'sample' at line number : %d in sample paper file", lineNumber);
             exit(1);
         }
         else
         {
-            while (parseArgument(sp, param, value))
+            while (parseArgument(sp, &param, &value))
             {
-                if (strcmp(*param, "type") == 0)
+                if (strcmp(param, "type") == 0)
                 {
-                    if (strcmp(*value, "numerical") == 0) //fill it with other types
+                    if (strcmp(value, "numerical") == 0) //fill it with other types
                     {
-                        qtype = *value;
+                        qtype = value;
                         isParameterRead[TYPE] = true;
                         free(param);
                     }
@@ -100,9 +100,9 @@ void readSamplePaper(FILE *sp)
                         exit(1);
                     }
                 }
-                else if (strcmp(*param, "diffub") == 0)
+                else if (strcmp(param, "diffub") == 0)
                 {
-                    if (sscanf(*value, "%lf", &diffub) != 1)
+                    if (sscanf(value, "%lf", &diffub) != 1)
                     {
                         printf("Error on line number : %d : Upper bound on difficulty must be a float", lineNumber);
                         isParameterRead[DIFFUB] = true;
@@ -110,9 +110,9 @@ void readSamplePaper(FILE *sp)
                         free(value);
                     }
                 }
-                else if (strcmp(*param, "difflb") == 0)
+                else if (strcmp(param, "difflb") == 0)
                 {
-                    if (sscanf(*value, "%lf", &difflb) != 1)
+                    if (sscanf(value, "%lf", &difflb) != 1)
                     {
                         printf("Error on line number : %d : Lower bound on difficulty must be a float", lineNumber);
                         isParameterRead[DIFFLB] = true;
@@ -120,9 +120,9 @@ void readSamplePaper(FILE *sp)
                         free(value);
                     }
                 }
-                else if (strcmp(*param, "num") == 0)
+                else if (strcmp(param, "num") == 0)
                 {
-                    if (sscanf(*value, "%d", &num) != 1)
+                    if (sscanf(value, "%d", &num) != 1)
                     {
                         printf("Error on line number : %d : number of questions must be an integer", lineNumber);
                         isParameterRead[NUM] = true;
@@ -132,9 +132,9 @@ void readSamplePaper(FILE *sp)
                 }
                 else
                 {
-                    printf("Unknown parameter '%s' on line number in question paper : %d", *param, lineNumber);
-                    free(*param);
-                    free(*value);
+                    printf("Unknown parameter '%s' on line number in question paper : %d", param, lineNumber);
+                    free(param);
+                    free(value);
                     exit(1);
                 }
             }
@@ -149,8 +149,8 @@ void readSamplePaper(FILE *sp)
                     printf("\"difflb\" ");
                 if (!isParameterRead[NUM])
                     printf("\"num\" ");
-                free(*param);
-                free(*value);
+                free(param);
+                free(value);
                 exit(1);
             }
             //Deal with finding and printing questions
