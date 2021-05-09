@@ -7,7 +7,7 @@
 #include "parsers.h"
 #include "lineNumber.h"
 
-void print_op(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
+void printTF(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
 {
     char **param;
     char **value;
