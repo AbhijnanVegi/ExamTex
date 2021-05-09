@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     }
 
     readQuestionBank(qb);//Read and store questions
-
+    printf("Question bank read successfully\n");
     //Sort
 
     FILE* sp = fopen(argv[2],"r");//Open sample paper
@@ -37,9 +37,11 @@ int main(int argc, char** argv)
 
     FILE* op = fopen(argv[3],"w");//Open output files
     FILE* oa = fopen(argv[4],"w");
-
     readSamplePaper(sp,op,oa);//Read sample paper and print to output
-    
+
+    printf("Sample paper read successfully\n");
+    printf("Output has been written succesfully\n");
+
     fclose(qb);//Close all files
     fclose(sp);
     fclose(op);

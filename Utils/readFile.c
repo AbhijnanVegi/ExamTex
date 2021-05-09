@@ -8,13 +8,14 @@
 #include "../vector/vec.h"
 #include "../Validators/validateNumerical.h"
 #include "../Validators/mulmcqs.h"
-int lineNumber = 0;
+int lineNumber;
 
 void readQuestionBank(FILE *qb)
 {
     char *type;
     char *param;
     char *value;
+    lineNumber = 1;
     while (parseType(qb, &type))
     {
         if (strcmp(type, "question") != 0)
@@ -40,7 +41,7 @@ void readQuestionBank(FILE *qb)
             else if (strcmp(value, "numerical") == 0)
             {
                 int id = ftell(qb);
-                validateNumerical(qb,id);
+                validateNumerical(qb, id);
             }
             else
             {
@@ -51,11 +52,12 @@ void readQuestionBank(FILE *qb)
     }
 }
 
-void readSamplePaper(FILE *sp, FILE * op, FILE* oa)
+void readSamplePaper(FILE *sp, FILE *op, FILE *oa)
 {
     char *param;
     char *value;
     char *type;
+    lineNumber = 1;
     enum parameters
     {
         TYPE,
@@ -64,17 +66,19 @@ void readSamplePaper(FILE *sp, FILE * op, FILE* oa)
         NUM
     };
     int numberOfParametersRequired = 4;
-    int parametersRead = 0;
+    int parametersRead;
     bool isParameterRead[4];
-    isParameterRead[TYPE] = false;
-    isParameterRead[DIFFUB] = false;
-    isParameterRead[DIFFLB] = false;
-    isParameterRead[NUM] = false;
+
     char *qtype;
     double diffub, difflb;
     double num;
     while (parseType(sp, &type))
     {
+        parametersRead = 0;
+        isParameterRead[TYPE] = false;
+        isParameterRead[DIFFUB] = false;
+        isParameterRead[DIFFLB] = false;
+        isParameterRead[NUM] = false;
         if (strcmp(type, "sample") != 0)
         {
             printf("Expected block of type 'sample' at line number : %d in sample paper file", lineNumber);
@@ -90,6 +94,7 @@ void readSamplePaper(FILE *sp, FILE * op, FILE* oa)
                     {
                         qtype = value;
                         isParameterRead[TYPE] = true;
+                        parametersRead++;
                         free(param);
                     }
                     else
@@ -105,30 +110,33 @@ void readSamplePaper(FILE *sp, FILE * op, FILE* oa)
                     if (sscanf(value, "%lf", &diffub) != 1)
                     {
                         printf("Error on line number : %d : Upper bound on difficulty must be a float", lineNumber);
-                        isParameterRead[DIFFUB] = true;
                         free(param);
                         free(value);
                     }
+                    isParameterRead[DIFFUB] = true;
+                    parametersRead++;
                 }
                 else if (strcmp(param, "difflb") == 0)
                 {
                     if (sscanf(value, "%lf", &difflb) != 1)
                     {
                         printf("Error on line number : %d : Lower bound on difficulty must be a float", lineNumber);
-                        isParameterRead[DIFFLB] = true;
                         free(param);
                         free(value);
                     }
+                    isParameterRead[DIFFLB] = true;
+                    parametersRead++;
                 }
                 else if (strcmp(param, "num") == 0)
                 {
                     if (sscanf(value, "%d", &num) != 1)
                     {
                         printf("Error on line number : %d : number of questions must be an integer", lineNumber);
-                        isParameterRead[NUM] = true;
                         free(param);
                         free(value);
                     }
+                    isParameterRead[NUM] = true;
+                    parametersRead++;
                 }
                 else
                 {

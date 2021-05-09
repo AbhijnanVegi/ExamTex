@@ -13,7 +13,7 @@ int isSyntax(char c)
 
 void raiseSyntaxError(char c)
 {
-    printf("Unexpected character '%c' %d at line : %d", c, c, lineNumber);
+    printf("Unexpected character '%c' at line : %d", c, lineNumber);
     exit(1);
 }
 
@@ -168,6 +168,9 @@ int parseArgument(FILE *fp, char **param, char **val)
         {
             escape = true;
             inVal = true;
+            add_string(value, c);
+            inVal = true;
+            continue;
         }
         else if (!(inVal) && (c == ' ' || c == '\n')) //Ignore all the spaces and newlines before first accepted character
         {

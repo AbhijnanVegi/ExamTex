@@ -1,4 +1,4 @@
-<sample{type = numerical}{ difficulty >= 1 }{score = 1}{num = 2}>
-<sample{type = numerical}{ difficulty <= 2 }{num = 1}>
-<sample{type = numerical}{score = 1}>
-<sample{type = numerical}{num = 3}>
+<sample{type = numerical}{ diffub = 1 }{ difflb = 0}{num = 2}>
+<sample{type = numerical}{ diffub = 3 }{ difflb = 1}{num = 2}>
+<sample{type = numerical}{ diffub = 2.5 }{ difflb = 0}{num = 1}>
+<sample{type = numerical}{ diffub = 5 }{ difflb = 3}{num = 1}>
