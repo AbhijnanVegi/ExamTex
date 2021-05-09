@@ -1,0 +1,9 @@
+<sample{type = mcq}{difflb = 0}{diffub = 2}{num = 2}>
+
+<sample{type = mcq}{difflb = 2}{diffub = 4}{num = 2}>
+
+<sample{type = mcq}{difflb = 4}{diffub = 6}{num = 3}>
+
+<sample{type = mcq}{difflb = 6}{diffub = 8}{num = 2}>
+
+<sample{type = mcq}{difflb = 8}{diffub = 8}{num = 1}>
