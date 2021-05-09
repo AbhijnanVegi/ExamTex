@@ -1,0 +1,207 @@
+<question
+{type = truefalse}
+{text = Queue and Stack are the linear data structures}
+{difficulty = 3}
+{opt = true/false}
+{ans = true}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = A complete binary tree with a height of h can have more nodes than a full binary tree with a height of h}
+{difficulty = 2}
+{opt = true/false}
+{ans = false}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = O(1) is the worst case time complexity of dequeue in a queue containing M elements implemented using an array}
+{difficulty = 2}
+{opt = true/false}
+{ans = true}
+{score = 4}>
+
+
+<question
+{type = truefalse}
+{text = The tightest bound time complexity of function T(N) = T(N/2) + 100 is O(N)}
+{difficulty = 8}
+{opt = true/false}
+{ans = false}
+{score = 4}>
+
+
+<question
+{type = truefalse}
+{text = Average case running time of Bubble sort is O(n log n)}
+{difficulty = 1}
+{opt = true/false}
+{ans = false}
+{score = 1}>
+
+
+<question
+{type = truefalse}
+{text = O(1), O(n), O(nlog n), O(n2) is the correct ascending order of time complexities (low to high time complexities)}
+{difficulty = 4}
+{opt = true/false}
+{ans = true}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = AVL Ttrees are variations of Binary Search Trees}
+{difficulty = 5}
+{opt = true/false}
+{ans = true}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = In a Binary Tree, a node may have a degree greater than 2}
+{difficulty = 3}
+{opt = true/false}
+{ans = false}
+{score = 1}>
+
+
+<question
+{type = truefalse}
+{text = Acyclic graphs do not have cycles}
+{difficulty = 5}
+{opt = true/false}
+{ans = false}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = In DFS, all the nodes adjacent to the current node are visited}
+{difficulty = 4}
+{opt = true/false}
+{ans = false}
+{score = 1}>
+
+
+////////////////////////////////////////////////////////////////Edge case
+<question
+{type = truefalse}
+{text =  	A self-referential structure contains a pointer member that points to a structure of the same structure type. For example, the following definition of structure node.
+                                            struct node
+                                            \{         
+                                             int data;
+                                             struct node *nextPtr;
+                                            \};}
+                                                             
+{difficulty = 8}
+{opt = true/false}
+{ans = false}
+{score = 3}>
+
+
+////////////////////////////////////////////////////////////////Edge case
+<question
+{type = truefalse}
+{text = Every node in a linked list has two components\: one to store the relevant information and one to store the address}
+{difficulty = 6}
+{opt = true/false}
+{ans = true}
+{score = 2}>
+
+
+////////////////////////////////////////////////////////////////Edge case
+<question
+{type = truefalse}
+{text = The address of the first node in a linked list is stored in a separate location//pointer, called the head}
+{difficulty = 7}
+{opt = true/false}
+{ans = true}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = The time complexity of adding 5 to each element of a array of N numbers is O(N)}
+{difficulty = 8}
+{opt = true/false}
+{ans = true}
+{score = 3}>
+
+
+//////////////////////////////////////////////////////////////may be an edge case
+<question
+{type = truefalse}
+{text = Let us suppose that there is a variable declaration int x = 50, *ptr. Then, the statement *ptr = &x is a valid statement in main() function}
+{difficulty = 8}
+{opt = true/false}
+{ans = false}
+{score = 4}>
+
+
+<question
+{type = truefalse}
+{text = Minimum and maximum height of a binary heap with N keys will be [ log2N ]}
+{difficulty = 6}
+{opt = true/false}
+{ans = false}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = Inserting an element to the beginning of an array (that is A[0] element) is more difficult than inserting an element to the beginning of a linked list}
+{difficulty = 2
+{opt = true/false}
+{ans = false}
+{score = 2}>
+
+///////////////////////////////////////////////////////////////edge case
+<question
+{type = TrueFlase}
+{difficulty = 9}
+{Suppose you are maintaining a stack and you push only when you encounter \}' and pop if you encounter '\' . If you are given a sequence of braces '\}\}\}\{\{\{' the stack will be empty 
+after you iterate through all the braces}
+{opt = true/false}
+{ans = true
+{score = 4}>
+
+
+<question
+{type = truefalse}
+{text = Maximum number of nodes in a binary tree that has N levels is 2N} ///// should be 2 power N
+{difficulty = 6}
+{opt = true/false}
+{ans = false}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = Binary search is always faster than linear search}
+{difficulty = 7}
+{opt = true/false}
+{ans = false}
+{score = 2>
+
+
+<question
+{type = truefalse}
+{text = An objective way to compare two algorithms is by comparing their execution time irrespective of the machines}
+{difficulty = 10}
+{opt = true/false}
+{ans = false}
+{score = 4>
+
+
+<question
+{type = truefalse}
+{text = When an array is passed to a function, the function receives a copy of the array (call by value)}
+{difficulty = 8}
+{opt = true/false}
+{ans = false}
+{score = 2>}
