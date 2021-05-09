@@ -8,3 +8,4 @@ CPackSourceConfig.cmake
 CTestTestfile.cmake
 DartConfiguration.tcl
 Makefile
+ExamTEX
