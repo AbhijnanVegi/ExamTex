@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "binary_search.h"
-#include "vec1.h"
+#include "../vector/vec.h"
 
 int binary_ub_search(vector *v, double upper_limit) //// This code returns the position of the largest element smaller than the upper bound
 {
