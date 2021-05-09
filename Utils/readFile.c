@@ -8,6 +8,7 @@
 #include "../vector/vec.h"
 #include "../Validators/validateNumerical.h"
 #include "../Validators/mulmcqs.h"
+#include "../Validators/mcq_SC_Val.h"
 int lineNumber;
 
 void readQuestionBank(FILE *qb)
@@ -51,8 +52,13 @@ void readQuestionBank(FILE *qb)
                 free(value);
                 free(type);
             }
-            else if (strcmp(value, "") == 0)
+            else if (strcmp(value, "mcq") == 0)
             {
+                int id = ftell(qb);
+                validateSingleCorrect_MCQ(qb, id);
+                free(param);
+                free(value);
+                free(type);
             }
             else if (strcmp(value, "") == 0)
             {
@@ -111,8 +117,12 @@ void readSamplePaper(FILE *sp, FILE *op, FILE *oa)
                         parametersRead++;
                         free(param);
                     }
-                    else if (strcmp(qtype, "singlecorrect") == 0)
+                    else if (strcmp(qtype, "mcq") == 0)
                     {
+                        qtype = value;
+                        isParameterRead[TYPE] = true;
+                        parametersRead++;
+                        free(param);
                     }
                     else if (strcmp(qtype, "truefalse") == 0)
                     {
