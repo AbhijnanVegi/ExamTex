@@ -1,6 +1,5 @@
 //////////This can be used for sorting of difficulties stored in vectors
 ///////////////////////////////////////////////////////////////////
-//////////////////////////////Can't be used at present coz they work only for int...modifying it at present
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -87,14 +86,14 @@ void mergeSort(vector *vec, int l, int r)
 {
 
     vector V;
-    int n = 0, m = 0, p = 0;
+    float n = 0, m = 0, p = 0;
 
     V = allocate(NODE, 5);
 
     for (int i = 0; i < 5; i++)
     {
         parameterUnion dummy;
-        scanf("%d %d %d", &n, &m, &p);
+        scanf("%f %f %f", &n, &m, &p);
         dummy.nd.diff = n;
         dummy.nd.score = m;
         dummy.nd.id = p;
@@ -106,10 +105,10 @@ void mergeSort(vector *vec, int l, int r)
     for (int i = 0; i < 5; i++)
     {
 
-        int n1 = V.u.nodeElems[i].diff;
-        int m1 = V.u.nodeElems[i].score;
-        int p1 = V.u.nodeElems[i].id;
+        float n1 = V.u.nodeElems[i].diff;
+        float m1 = V.u.nodeElems[i].score;
+        float p1 = V.u.nodeElems[i].id;
 
-        printf("%d %d %d\n", n1, m1, p1);
+        printf("%f %f %f\n", n1, m1, p1);
     }
 }*/
