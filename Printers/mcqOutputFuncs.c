@@ -32,6 +32,7 @@ void printSingleCorrect_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
     // Pointers for correctAnswer and Options...
     char **anss, **opts;
     anss = (char **)malloc(sizeof(char *) * 8);
+    // Single Correct MCQs cannot have more than 1 answer correct
     opts = (char **)malloc(sizeof(char *) * 8);
 
     // for counting the nno. of options and correctAnswers...
