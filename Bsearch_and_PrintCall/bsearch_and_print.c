@@ -66,9 +66,11 @@ void select_rand_q(vector *vec, int ub, int lb, int num_q, char *type, FILE *fp)
         srand(time(0));
         for (int i = 0; i < num_q; i++)
         {
+            
             m = rand() % (ub - lb);
-            fseek(fp, index, SEEK_SET);
             index = vec->u.nodeElems[lb + m].id;
+            fseek(fp, index, SEEK_SET);
+           
             printmcq(fp, outputQP, outputANS); 
         }
     }
@@ -78,8 +80,9 @@ void select_rand_q(vector *vec, int ub, int lb, int num_q, char *type, FILE *fp)
         for (int i = 0; i < num_q; i++)
         {
             m = rand() % (ub - lb);
-            fseek(fp, index, SEEK_SET);
             index = vec->u.nodeElems[lb + m].id;
+            fseek(fp, index, SEEK_SET);
+           
             printmulmcq(fp, outputQP, outputANS);///////////Need to change the names of functions
         }
     }
@@ -89,8 +92,9 @@ void select_rand_q(vector *vec, int ub, int lb, int num_q, char *type, FILE *fp)
         for (int i = 0; i < num_q; i++)
         {
             m = rand() % (ub - lb);
-            fseek(fp, index, SEEK_SET);
             index = vec->u.nodeElems[lb + m].id;
+            fseek(fp, index, SEEK_SET);
+            
             printTF(fp, outputQP, outputANS);
         }
     }
@@ -100,8 +104,9 @@ void select_rand_q(vector *vec, int ub, int lb, int num_q, char *type, FILE *fp)
         for (int i = 0; i < num_q; i++)
         {
             m = rand() % (ub - lb);
-            fseek(fp, index, SEEK_SET);
             index = vec->u.nodeElems[lb + m].id;
+            fseek(fp, index, SEEK_SET);
+           
             printsingleword(fp, outputQP, outputANS);//////////////////////////
         }
     }
