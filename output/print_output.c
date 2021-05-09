@@ -44,33 +44,4 @@ void print_op(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
     fprintf(outputAnswer, "%0.2f", ans);
 }
 
-void go_to_pointer(FILE *qb, int n, FILE *outputPaper, FILE *outputAnswer)
-{
 
-    ////////////Not sure but ig we need to add fopen function over here
-    fseek(qb, n, SEEK_SET);
-    char *type;
-    char **param;
-    char **value;
-    int pos = 0;
-    while (parseType(qb, type))
-    {
-        if (strcmp(*value, "truefalse") == 0)
-        {
-            print_op(qb, outputPaper, outputAnswer);
-        }
-    }
-}
-
-void printTF(vector *v)
-{
-    FILE *TF_qb;
-    FILE *outputPaper;
-    FILE *outputAnswer;
-    int n = 0;
-    for (int i = 0; i < v->last; i++)
-    {
-        n = v->u.nodeElems[i].id;
-        go_to_pointer(TF_qb, n, outputPaper, outputAnswer);
-    }
-}
