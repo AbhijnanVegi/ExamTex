@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "vec1.h" //// contains vectors written by Shreyansh
+#include "../vector/vec.h"
 
 void merge(vector *vec, int l, int m, int r)
 {
