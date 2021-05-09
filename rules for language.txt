@@ -77,9 +77,10 @@ Question Bank file :-
 Question Paper file :-
 
 	- Each question requirment will be written as a block of text.
-	- Each bolck starts with <sample>.
+	- Each bolck starts with <sample.. .
 	- It is followed by attributes.
 	- The first attribute is always type. Format {type = <question type>}
 	- The second and third attribute are difficulty one being the lower bound and the other being the upper bound.
-	  Format {difficulty >= <integer>} {difficulty <= <integer>}. Note only one of the bounds for difficulty can be used as well.
+	  Format {difflb = <integer>} {diffub <= <integer>}.This determines the lowerbound and upperbound of the difficulty.
+	  Note only one of the bounds for difficulty can be used as well.
 	- The third attribute is the number of question required. Format {number = <integer>}.
