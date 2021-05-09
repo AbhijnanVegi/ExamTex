@@ -1,4 +1,6 @@
 //////////This can be used for sorting of difficulties stored in vectors
+///////////////////////////////////////////////////////////////////
+//////////////////////////////Can't be used at present coz they work only for int...modifying it at present
 
 #include <stdio.h>
 #include <stdlib.h>
