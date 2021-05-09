@@ -4,6 +4,9 @@
 #include <stdbool.h>
 #include "../Utils/parsers.h"
 #include "../Utils/lineNumber.h"
+#include "../vector/vec.h"
+
+extern vector vec_numerical;
 
 void validateNumerical(FILE *fp, int id)
 {
@@ -11,6 +14,7 @@ void validateNumerical(FILE *fp, int id)
     char *value;
     int numberOfParametersRequired = 4;
     int parametersRead = 0;//Number of parameters read
+    parameterUnion u;
     enum parameters
     {
         TEXT,
@@ -139,4 +143,8 @@ void validateNumerical(FILE *fp, int id)
         exit(1);
     }
     //save the question here
+    u.nd.id = id;
+    u.nd.diff = difficulty;
+    u.nd.score = score;
+    push_back(&vec_numerical,u);
 }

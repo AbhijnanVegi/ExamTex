@@ -5,8 +5,14 @@
 #include "Utils/lineNumber.h"
 #include "Utils/parsers.h"
 #include "Utils/readFile.h"
-extern vector vecmulmcq;
+
+
+extern vector vec_mul_mcq;
+extern vector vec_numerical;
+
+
 vector vec_mul_mcq;
+vector vec_numerical;
 
 int main(int argc, char** argv)
 {
@@ -16,6 +22,10 @@ int main(int argc, char** argv)
         exit(0);
     }
 
+
+    //allocate vectors
+    vec_mul_mcq = allocate(NODE,20);
+    vec_numerical = allocate(NODE,20);
 
     FILE* qb = fopen(argv[1],"r");//Open question bank
     if (qb == NULL)
