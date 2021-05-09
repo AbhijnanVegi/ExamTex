@@ -12,35 +12,36 @@ int lineNumber = 0;
 
 void readQuestionBank(FILE *qb)
 {
-    char **type;
-    char **param;
-    char **value;
-    while (parseType(qb, type))
+    char *type;
+    char *param;
+    char *value;
+    while (parseType(qb, &type))
     {
-        if (strcmp(*type, "question") != 0)
+        if (strcmp(type, "question") != 0)
         {
             printf("Expected block of type 'question' at line number : %d in question bank file", lineNumber);
             exit(1);
         }
         else
         {
-            if (!parseArgument(qb, param, value) || strcmp(*param, "type") != 0)
+            if (!parseArgument(qb, &param, &value) || strcmp(param, "type") != 0)
             {
                 printf("Expected type of question at line number : %d in question bank file", lineNumber);
                 exit(1);
             }
-            else if (strcmp(*value, "singlecorrect") == 0)
+            else if (strcmp(value, "singlecorrect") == 0)
             {
                 int id = ftell(qb);
                 mul_mcq_validator(qb, id);
-                free(*param);
-                free(*value);
+                free(param);
+                free(value);
+                free(type);
             }
-            else if (strcmp(*value, "numerical") == 0)
+            /*else if (strcmp(value, "numerical") == 0)
             {
                 int id = ftell(qb);
                 validateNumerical(qb);
-            }
+            }*/
             else
             {
                 printf("Invalid type of question at line number : %d in question bank file", lineNumber);

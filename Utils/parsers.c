@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-
+#include"../Validators/mulmcqs.h"
 int isSyntax(char c)
 {
     return (c == '<' || c == '>' || c == '=' || c == '{' || c == '}' || c == ':');
@@ -13,7 +13,7 @@ int isSyntax(char c)
 
 void raiseSyntaxError(char c)
 {
-    printf("Unexpected character '%c' at line : %d", c, lineNumber);
+    printf("Unexpected character '%c' %d at line : %d", c, c, lineNumber);
     exit(1);
 }
 
@@ -29,7 +29,7 @@ int parseType(FILE *fp, char **des)
     vector *dest = &v_dest;
     while ((c = fgetc(fp)) != '<') //Move cursor to the start of argument
     {
-        if (c == feof(fp)) //EOF
+        if (c == EOF) //EOF
         {
             return 0;
         }
@@ -65,7 +65,8 @@ int parseType(FILE *fp, char **des)
         if (c == '\n')
             lineNumber++;
     }
-    *des = (char *)malloc(sizeof(char) * strlen(return_string(dest)));
+    int blah = strlen(return_string(dest));
+    *des = (char *)malloc(blah + 1);
     strcpy(*des, return_string(dest));
     deletevector(dest);
     return 1;
@@ -186,7 +187,10 @@ int parseArgument(FILE *fp, char **param, char **val)
     *param = (char *)malloc(sizeof(char) * strlen(return_string(parameter)));
     strcpy(*param, return_string(parameter));
     *val = (char *)malloc(sizeof(char) * strlen(return_string(value)));
+
     strcpy(*val, return_string(value));
+    remove_spaces(param);
+    remove_spaces(val);
     deletevector(parameter);
     deletevector(value);
     return 1;
