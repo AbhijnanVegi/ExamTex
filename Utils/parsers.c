@@ -65,8 +65,7 @@ int parseType(FILE *fp, char **des)
         if (c == '\n')
             lineNumber++;
     }
-    int blah = strlen(return_string(dest));
-    *des = (char *)malloc(blah + 1);
+    *des = (char *)malloc(strlen(return_string(dest)) + 1);
     strcpy(*des, return_string(dest));
     deletevector(dest);
     return 1;
@@ -169,7 +168,6 @@ int parseArgument(FILE *fp, char **param, char **val)
             escape = true;
             inVal = true;
             add_string(value, c);
-            inVal = true;
             continue;
         }
         else if (!(inVal) && (c == ' ' || c == '\n')) //Ignore all the spaces and newlines before first accepted character

@@ -43,6 +43,15 @@ void readQuestionBank(FILE *qb)
                 int id = ftell(qb);
                 validateNumerical(qb, id);
             }
+            else if (strcmp(value, "") == 0)
+            {
+            }
+            else if (strcmp(value, "") == 0)
+            {
+            }
+            else if (strcmp(value, "") == 0)
+            {
+            }
             else
             {
                 printf("Invalid type of question at line number : %d in question bank file", lineNumber);
@@ -96,6 +105,18 @@ void readSamplePaper(FILE *sp, FILE *op, FILE *oa)
                         isParameterRead[TYPE] = true;
                         parametersRead++;
                         free(param);
+                    }
+                    else if (strcmp(qtype, "singlecorrect") == 0)
+                    {
+                    }
+                    else if (strcmp(qtype, "") == 0)
+                    {
+                    }
+                    else if (strcmp(qtype, "") == 0)
+                    {
+                    }
+                    else if (strcmp(qtype, "") == 0)
+                    {
                     }
                     else
                     {
@@ -163,6 +184,22 @@ void readSamplePaper(FILE *sp, FILE *op, FILE *oa)
             }
             //Deal with finding and printing questions
             //bsearch(type,difflb,diffub,num);
+            if (strcmp(qtype, "numerical") == 0)
+            {
+                //call
+            }
+            else if (strcmp(qtype, "singlecorrect") == 0)
+            {
+            }
+            else if (strcmp(qtype, "") == 0)
+            {
+            }
+            else if (strcmp(qtype, "") == 0)
+            {
+            }
+            else if (strcmp(qtype, "") == 0)
+            {
+            }
         }
     }
 }

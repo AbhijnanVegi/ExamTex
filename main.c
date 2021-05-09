@@ -9,10 +9,16 @@
 
 extern vector vec_mul_mcq;
 extern vector vec_numerical;
+extern vector vec_single_C_mcq;
+extern vector vec_tf;
+extern vector vec_oneword;
 
 
 vector vec_mul_mcq;
 vector vec_numerical;
+vector vec_single_C_mcq;
+vector vec_tf;
+vector vec_oneword;
 
 int main(int argc, char** argv)
 {
@@ -23,9 +29,12 @@ int main(int argc, char** argv)
     }
 
 
-    //allocate vectors
+    //allocate vectors for storing data
     vec_mul_mcq = allocate(NODE,20);
     vec_numerical = allocate(NODE,20);
+    vec_single_C_mcq = allocate(NODE,20);
+    vec_tf = allocate(NODE, 20);
+    vec_oneword = allocate(NODE, 20);
 
     FILE* qb = fopen(argv[1],"r");//Open question bank
     if (qb == NULL)
@@ -56,6 +65,13 @@ int main(int argc, char** argv)
     fclose(sp);
     fclose(op);
     fclose(oa);
+
+    //delete vectors
+    deletevector(&vec_mul_mcq);
+    deletevector(&vec_numerical);
+    deletevector(&vec_single_C_mcq);
+    deletevector(&vec_tf);
+    deletevector(&vec_oneword);
 
     return 0;
 }
