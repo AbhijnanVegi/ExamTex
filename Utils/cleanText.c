@@ -1,5 +1,5 @@
 #include "cleanText.h"
-
+// This function removes '//' char from the text
 void clean(char text[])
 {
     int i = 0;
