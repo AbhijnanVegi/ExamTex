@@ -1,33 +1,33 @@
 <sample
 {type = truefalse}
-{difficulty >= 1}
-{difficulty <= 3}
+{difficulty > 1}
+{difficulty < 3}
 {number = 3}>
 
 
 <sample
 {type = truefalse}
-{difficulty >= 3}
-{difficulty <= 5}
+{difficulty > 3}
+{difficulty < 5}
 {number = 2}>
 
 
 <sample
 {type = turefalse}
-{difficulty >= 5}
-{difficulty <= 7}
+{difficulty > 5}
+{difficulty < 7}
 {number = 5}>
 
 
 <sample
 {type = truefalse}
-{difficulty >= 6}
-{difficulty <= 9}
+{difficulty > 6}
+{difficulty < 9}
 {number = 3}>
 
 
 <sample
 {type = truefalse}
-{difficulty >= 5}
-{difficulty <= 10}
+{difficulty > 5}
+{difficulty < 10}
 {number = 6}>
