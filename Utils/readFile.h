@@ -6,5 +6,6 @@
 typedef bool flag;
 
 void readQuestionBank(FILE* qb);
+void readSamplePaper(FILE *sp, FILE * op, FILE* oa);
 
 #endif

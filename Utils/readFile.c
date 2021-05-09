@@ -51,7 +51,7 @@ void readQuestionBank(FILE *qb)
     }
 }
 
-void readSamplePaper(FILE *sp)
+void readSamplePaper(FILE *sp, FILE * op, FILE* oa)
 {
     char *param;
     char *value;
