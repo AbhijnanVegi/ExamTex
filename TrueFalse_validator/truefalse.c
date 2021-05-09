@@ -1,7 +1,6 @@
 
 ////// I am not using flush function anywhere , I need to include it
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -10,34 +9,41 @@
 #include "lineNumber.h"
 #include "vec1.h"
 
-int check_if_complete(bool flag[5]) /////// This function checks if all the required parametres have been entered
+enum parameters
 {
-    int count = 0;
-    for (int i = 0; i < 5; i++)
-    {
-        if (flag[i] == true)
-        {
-            count++;
-            flag[i] == false;
-        }
-    }
-
-    return count;
-}
+    TEXT,
+    OPT,
+    ANS,
+    DIFFICULTY,
+    SCORE
+};
 
 void validateTrueFalse(FILE *fp, int pos)
 {
-    char param[20];  /// To store the LHS side of '='
-    char value[100]; //// To store the RHS side of '='
+    char **param; /// To store the LHS side of '='
+    char **value; //// To store the RHS side of '='
     int numberOfParametersRequired = 5;
     int parametersRead = 0; //// It keeps track of the number of parameters that have been temporarily stored in newnode before pushing it into Vec
-    char ans[7] = {0};      //// To check if the answer is valid
+    char ans[20] = {0};     //// To check if the answer is valid
     double difficulty;      //// To check if the parameter difficulty has been encounterd
     double score;           //////To check if the parameter score has been encounterd
     int n = 0;              /////Not really required need to fix before sub
     //int i = 0;
-    char opt[7]={0};
-    bool flag[5] = {false};
+
+    /*enum parametres
+    {
+        IS_TEXT,IS_ANS,IS_DIFF,IS_SCORE,_IS_OPT,
+    };*/
+
+    bool flag[5]; //Array to store if aprticular parameter has been read
+    flag[TEXT] = false;
+    flag[OPT] = false;
+    flag[ANS] = false;
+    flag[DIFFICULTY] = false;
+    flag[SCORE] = false;
+
+    char opt[20] = {0};
+    //bool flag[5] = {false};
 
     vector vec;
 
@@ -57,73 +63,138 @@ void validateTrueFalse(FILE *fp, int pos)
             newnode.nd.id = ftell(fp);
         }
 
-        if (strcmp(param, "text") == 0)
+        if (strcmp(*param, "text") == 0)
         {
             //Do nothing as no validation is required for text
             //Save in vector
-            parametersRead++;
-            flag[0] = true; /// Just makes a note that parametre text has been read
-        }
-        
-        if(strcmp(param, "opt") == 0)
-        {
-            if (sscanf(value, "%s", opt) != 1 || strcmp(ans, "true/false") != 0)
+            if (flag[TEXT] == false)
             {
-               printf("Error on the line number : %d, opt must be of the form true/false ",lineNumber);
+                flag[TEXT] = true; /// Just makes a note that parametre text has been read
+                parametersRead++;
             }
-            flag[1] = true;
-            parametersRead++;
-
-        }
-
-        else if (strcmp(param, "ans") == 0)
-        {
-
-            if (sscanf(value, "%s", ans) != 1 || ((strcmp(ans, "true") != 0) && (strcmp(ans, "false") != 0)))
+            else
             {
-                /// flags an error either if no answer has been entered or the entered ans is neither true nor false
-                printf("Error on line number : %d, Answer must be true or false", lineNumber);
+                printf("Error on line number : %d : Duplicate parameter \"text\"", lineNumber);
+                //free(*param);
+                //free(*value);
+                exit(1);
             }
-            flag[2] = true;
-            parametersRead++;
+            free(*param);
+            free(*value);
         }
-        else if (strcmp(param, "difficulty") == 0)
+
+        if (strcmp(*param, "opt") == 0)
         {
-            if (sscanf(value, "%lf", &difficulty) != 1)
+            if (!flag[OPT])
             {
-                printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                if (sscanf(*value, "%s", opt) != 1 || strcmp(opt, "true/false") != 0)
+                {
+                    printf("Error on the line number : %d, opt must be of the form true/false ", lineNumber);
+                }
+                flag[OPT] = true;
+                parametersRead++;
             }
 
-            flag[3] = true;
-            newnode.nd.diff = difficulty;
-            parametersRead++;
-        }
-        else if (strcmp(param, "score") == 0)
-        {
-            if (sscanf(value, "%lf", &score) != 1)
+            else
             {
-                printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                printf("Error on line number : %d : Duplicate parameter \"ans\"", lineNumber);
+                exit(1);
             }
-            flag[4] = true;
-            newnode.nd.score = score;
-            parametersRead++;
+            free(*param);
+            free(*value);
+        }
+
+        else if (strcmp(*param, "ans") == 0)
+        {
+            if (!flag[ANS])
+            {
+                if (sscanf(*value, "%s", ans) != 1 || ((strcmp(ans, "true") != 0) && (strcmp(ans, "false") != 0)))
+                {
+                    /// flags an error either if no answer has been entered or the entered ans is neither true nor false
+                    printf("Error on line number : %d, Answer must be true or false", lineNumber);
+                }
+                flag[ANS] = true;
+                parametersRead++;
+            }
+            else
+            {
+                printf("Error on line number : %d : Duplicate parameter \"ans\"", lineNumber);
+                exit(1);
+            }
+            free(*param);
+            free(*value);
+        }
+
+        else if (strcmp(*param, "difficulty") == 0)
+        {
+            if (!flag[DIFFICULTY])
+            {
+                if ((sscanf(*value, "%lf", &difficulty) != 1))
+                {
+                    printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                }
+                flag[DIFFICULTY] = true;
+                newnode.nd.diff = difficulty;
+                parametersRead++;
+            }
+            else
+            {
+                printf("Error on line number : %d : Duplicate parameter \"ans\"", lineNumber);
+                exit(1);
+            }
+
+            free(*param);
+            free(*value);
+        }
+        else if (strcmp(*param, "score") == 0)
+        {
+            if (!flag[SCORE])
+            {
+                if ((sscanf(value, "%lf", &score) != 1))
+                {
+                    printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                }
+                flag[SCORE] = true;
+                newnode.nd.score = score;
+                parametersRead++;
+            }
+            else
+            {
+                printf("Error on line number : %d : Duplicate parameter \"ans\"", lineNumber);
+                exit(1);
+            }
+
+            free(*param);
+            free(*value);
         }
         else
         {
             printf("Unknown parameter '%s' on line number : %d", param, lineNumber);
         }
 
-
         /// parametersRead == numberOfParametersRequired /// can be actually completely avoided
-        if (parametersRead == numberOfParametersRequired && check_if_complete(flag) == 5)
-        {  
+        if (parametersRead == numberOfParametersRequired)
+        {
             /// only if all the correct set of parametres have been entered push it into vec
             push_back(&vec, newnode);
             parametersRead = 0;
         }
         else
         {
-            printf("parameters are missing ");
+            printf("Error on line number : %d: Missing parameters : ", lineNumber); //print all missing parameters
+            if (!flag[TEXT])
+                printf("\"text\" ");
+            if (!flag[OPT])
+                printf("\"opt\" ");
+            if (!flag[ANS])
+                printf("\"ans\" ");
+            if (!flag[DIFFICULTY])
+                printf("\"diffuculty\" ");
+            if (!flag[SCORE])
+                printf("\"score\" ");
+            free(*param);
+            free(*value);
+            exit(1);
         }
     }
     //save the question here
