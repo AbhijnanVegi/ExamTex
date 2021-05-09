@@ -83,4 +83,4 @@ Question Paper file :-
 	- The second and third attribute are difficulty one being the lower bound and the other being the upper bound.
 	  Format {difflb = <integer>} {diffub <= <integer>}.This determines the lowerbound and upperbound of the difficulty.
 	  Note only one of the bounds for difficulty can be used as well.
-	- The third attribute is the number of question required. Format {number = <integer>}.
+	- The third attribute is the number of question required. Format {num = <integer>}.
