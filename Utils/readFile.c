@@ -45,6 +45,11 @@ void readQuestionBank(FILE *qb)
             }
             else if (strcmp(value, "") == 0)
             {
+                int id = ftell(qb);
+                validateTrueFalse(qb, id);
+                free(param);
+                free(value);
+                free(type);
             }
             else if (strcmp(value, "") == 0)
             {
@@ -109,8 +114,12 @@ void readSamplePaper(FILE *sp, FILE *op, FILE *oa)
                     else if (strcmp(qtype, "singlecorrect") == 0)
                     {
                     }
-                    else if (strcmp(qtype, "") == 0)
+                    else if (strcmp(qtype, "truefalse") == 0)
                     {
+                        qtype = value;
+                        isParameterRead[TYPE] = true;
+                        parametersRead++;
+                        free(param);
                     }
                     else if (strcmp(qtype, "") == 0)
                     {
@@ -191,7 +200,7 @@ void readSamplePaper(FILE *sp, FILE *op, FILE *oa)
             else if (strcmp(qtype, "singlecorrect") == 0)
             {
             }
-            else if (strcmp(qtype, "") == 0)
+            else if (strcmp(qtype, "truefalse") == 0)
             {
             }
             else if (strcmp(qtype, "") == 0)
