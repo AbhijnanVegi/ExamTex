@@ -38,7 +38,7 @@ void select_rand_q(int ub, int lb, int num_q, char *type, FILE *fp) ////This fun
             index = vec->u.nodeElems[lb + m].id;
             fseek(fp, index, SEEK_SET);
            
-            printmcq(fp, outputQP, outputANS); 
+            printSingleCorrect_MCQs(fp, outputQP, outputANS); 
         }
     }
     if (strcmp(type, "mul_mcq") == 0)
@@ -74,11 +74,14 @@ void select_rand_q(int ub, int lb, int num_q, char *type, FILE *fp) ////This fun
             index = vec->u.nodeElems[lb + m].id;
             fseek(fp, index, SEEK_SET);
            
-            printsingleword(fp, outputQP, outputANS);//////////////////////////
+            printOneWord(fp, outputQP, outputANS);//////////////////////////
         }
     }
 }
 
+
+////////////This function calls the binary search functions in binary_search.h to give the lower and upper bound of the difficulty vector
+////////////It gives the range in the sorted vector array , from which we can pick questions to ouput in the output file
 void b_search(vector *vec, float diff_ub, float diff_lb, int num_q, char type[], FILE *fp)
 {
 
