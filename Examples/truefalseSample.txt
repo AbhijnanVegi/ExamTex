@@ -1,33 +1,33 @@
 <sample
 {type = truefalse}
-{difflb > 1}
-{diffub < 3}
+{difflb = 1}
+{diffub = 3}
 {number = 3}>
 
 
 <sample
 {type = truefalse}
-{difflb > 3}
-{diffub < 5}
+{difflb = 3}
+{diffub = 5}
 {number = 2}>
 
 
 <sample
 {type = turefalse}
-{difflb > 5}
-{diffub < 7}
+{difflb = 5}
+{diffub = 7}
 {number = 5}>
 
 
 <sample
 {type = truefalse}
-{difflb > 6}
-{diffub < 9}
+{difflb = 6}
+{diffub = 9}
 {number = 3}>
 
 
 <sample
 {type = truefalse}
-{difflb > 5}
-{diffub < 10}
+{difflb = 5}
+{diffub = 10}
 {number = 6}>
