@@ -88,7 +88,7 @@
 {score = 1}>
 
 
-////////////////////////////////////////////////////////////////Edge case
+
 <question
 {type = truefalse}
 {text =  	A self-referential structure contains a pointer member that points to a structure of the same structure type. For example, the following definition of structure node.
@@ -104,7 +104,7 @@
 {score = 3}>
 
 
-////////////////////////////////////////////////////////////////Edge case
+
 <question
 {type = truefalse}
 {text = Every node in a linked list has two components\: one to store the relevant information and one to store the address}
@@ -114,7 +114,6 @@
 {score = 2}>
 
 
-////////////////////////////////////////////////////////////////Edge case
 <question
 {type = truefalse}
 {text = The address of the first node in a linked list is stored in a separate location//pointer, called the head}
@@ -133,7 +132,7 @@
 {score = 3}>
 
 
-//////////////////////////////////////////////////////////////may be an edge case
+
 <question
 {type = truefalse}
 {text = Let us suppose that there is a variable declaration int x = 50, *ptr. Then, the statement *ptr = &x is a valid statement in main() function}
@@ -160,7 +159,7 @@
 {ans = false}
 {score = 2}>
 
-///////////////////////////////////////////////////////////////edge case
+
 <question
 {type = TrueFlase}
 {difficulty = 9}
