@@ -20,6 +20,18 @@ vector vec_single_C_mcq;
 vector vec_tf;
 vector vec_oneword;
 
+extern vector vec_mul_mcq_bool;
+extern vector vec_numerical_bool;
+extern vector vec_single_C_mcq_bool;
+extern vector vec_tf_bool;
+extern vector vec_oneword_bool;
+
+vector vec_mul_mcq_bool;
+vector vec_numerical_bool;
+vector vec_single_C_mcq_bool;
+vector vec_tf_bool;
+vector vec_oneword_bool;
+
 extern int question_number;
 int question_number;
 int main(int argc, char **argv)
@@ -53,7 +65,11 @@ int main(int argc, char **argv)
     mergeSort(&vec_single_C_mcq, 0, size(&vec_single_C_mcq) - 1);
     mergeSort(&vec_tf, 0, size(&vec_tf) - 1);
     mergeSort(&vec_oneword, 0, size(&vec_oneword) - 1);
-
+    vec_mul_mcq_bool = allocate(STRING, vec_mul_mcq.last + 1);
+    vec_numerical_bool = allocate(STRING, vec_numerical.last + 1);
+    vec_single_C_mcq_bool = allocate(STRING, vec_single_C_mcq.last + 1);
+    vec_tf_bool = allocate(STRING, vec_tf.last + 1);
+    vec_oneword_bool = allocate(STRING, vec_oneword.last + 1);
     FILE *sp = fopen(argv[2], "r"); //Open sample paper
     if (sp == NULL)
     {
