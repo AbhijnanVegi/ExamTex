@@ -1,8 +1,0 @@
-What is 2x{5+5} (Score : 1)
-Answer : _____
-Find the avg of 2,3,4,5 (Score : 2)
-Answer : _____
-Find the number of missing HTML tags in <br><span><a></br> (Score : 1)
-Answer : _____
-Number of elements in the set $A = \{1,2,3,4,5}\$ (Score : 2)
-Answer : _____
