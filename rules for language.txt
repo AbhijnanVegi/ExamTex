@@ -19,7 +19,7 @@ Question Bank file :-
 		   - Syntax "mcq" (without quotes)
 		   - attribuutes for mcq
 		   		text: The actual question in plain text.Format {text = <question text>}
-		   		opt : The optinons for the question (max 8). Format {opt = <opt1> : <opt2> : ...}
+		   		opt : The optinons for the question. Format {opt = <opt1> : <opt2> : ...}
 		    	              each option will be separated by a colon " : ".
 		   		difficulty : It will store the difficulty of the question in integer format (1 to 10)
 		   	 	             Format {difficulty = <integer>}
@@ -81,6 +81,6 @@ Question Paper file :-
 	- It is followed by attributes.
 	- The first attribute is always type. Format {type = <question type>}
 	- The second and third attribute are difficulty one being the lower bound and the other being the upper bound.
-	  Format {difflb = <integer>} {diffub <= <integer>}.This determines the lowerbound and upperbound of the difficulty.
+	  Format {difflb = <integer>} {diffub = <integer>}.This determines the lowerbound and upperbound of the difficulty.
 	  Note only one of the bounds for difficulty can be used as well.
 	- The third attribute is the number of question required. Format {num = <integer>}.
