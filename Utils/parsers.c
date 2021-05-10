@@ -38,7 +38,7 @@ int parseType(FILE *fp, char **des)
         {
             raiseSyntaxError(c);
         }
-        if (c == '\n')
+        if (c == '\n' && editLineNumber)
             lineNumber++;
     }
     while ((c = fgetc(fp)))
@@ -63,7 +63,7 @@ int parseType(FILE *fp, char **des)
             fseek(fp, -1L, SEEK_CUR); //set the cursor to prev cursor so it can be read
             break;                    //by other functions
         }
-        if (c == '\n')
+        if (c == '\n' && editLineNumber)
             lineNumber++;
     }
     *des = (char *)malloc(strlen(return_string(dest)) + 1);
@@ -103,7 +103,7 @@ int parseArgument(FILE *fp, char **param, char **val)
             }
             raiseSyntaxError(c);
         }
-        if (c == '\n')
+        if (c == '\n' && editLineNumber)
             lineNumber++;
     }
     while ((c = fgetc(fp))) //Get and fill parameter
@@ -128,7 +128,7 @@ int parseArgument(FILE *fp, char **param, char **val)
             fseek(fp, -1L, SEEK_CUR);
             break;
         }
-        if (c == '\n')
+        if (c == '\n' && editLineNumber)
             lineNumber++;
     }
     index = 0;                     //reset index
@@ -144,7 +144,7 @@ int parseArgument(FILE *fp, char **param, char **val)
         {
             raiseSyntaxError(c);
         }
-        if (c == '\n')
+        if (c == '\n' && editLineNumber)
             lineNumber++;
     }
     while ((c = fgetc(fp))) //Fill in value after considering escape sequences
@@ -183,7 +183,7 @@ int parseArgument(FILE *fp, char **param, char **val)
 
         if (escape) //Toggle escape if true
             escape = false;
-        if (c == '\n')
+        if (c == '\n' && editLineNumber)
             lineNumber++;
     }
     *param = (char *)malloc(sizeof(char) * strlen(return_string(parameter)) + 1);

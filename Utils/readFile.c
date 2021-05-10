@@ -20,6 +20,7 @@ extern vector vec_tf;
 extern vector vec_oneword;
 
 int lineNumber;
+bool editLineNumber;
 
 void readQuestionBank(FILE *qb)
 {
@@ -27,6 +28,7 @@ void readQuestionBank(FILE *qb)
     char *param;
     char *value;
     lineNumber = 1;
+    editLineNumber = true;
     while (parseType(qb, &type))
     {
         if (strcmp(type, "question") != 0)
@@ -228,6 +230,7 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
                 exit(1);
             }
             //Deal with finding and printing questions
+            editLineNumber = false;
             if (strcmp(qtype, "numerical") == 0)
             {
                 b_search(&vec_numerical,diffub,difflb,num,qtype,qb,op,oa);
@@ -248,6 +251,7 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
             {
                 b_search(&vec_mul_mcq,diffub,difflb,num,qtype,qb,op,oa);
             }
+            editLineNumber = true;
         }
     }
 }
