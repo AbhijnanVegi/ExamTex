@@ -1,5 +1,6 @@
 #include "parsers.h"
 #include "lineNumber.h"
+#include "cleanText.h"
 #include "../vector/vec.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -185,9 +186,9 @@ int parseArgument(FILE *fp, char **param, char **val)
         if (c == '\n')
             lineNumber++;
     }
-    *param = (char *)malloc(sizeof(char) * strlen(return_string(parameter)));
+    *param = (char *)malloc(sizeof(char) * strlen(return_string(parameter)) + 1);
     strcpy(*param, return_string(parameter));
-    *val = (char *)malloc(sizeof(char) * strlen(return_string(value)));
+    *val = (char *)malloc(strlen(return_string(value)) + 1);
 
     strcpy(*val, return_string(value));
     remove_spaces(param);

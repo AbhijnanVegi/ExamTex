@@ -249,3 +249,131 @@
 {ans = θ(m + n)}
 {score = 4}
 >
+<question{type = numerical}{text = What is 2x\{5+5\}}{ans = 20}{difficulty = 1.5}{score = 1.2}><question{type = numerical}{text = Find the avg of 2,3,4,5}{ans = 3.5}{difficulty = 2}{score = 2}><question{type = numerical}{text = Find the number of missing HTML tags in \<br\>\<span\>\<a\>\</br\>}{ans = 2}{difficulty = 3.2}{score = 1}><question{type = numerical}{text = Number of elemnts in the set $A \= \\\{1,2,3,4,5\\\}$}{ans = 2}{difficulty = 1}{score = 2}>
+<question
+{type = truefalse}
+{text = Queue and Stack are the linear data structures}
+{difficulty = 3}
+{ans = true}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = A complete binary tree with a height of h can have more nodes than a full binary tree with a height of h}
+{difficulty = 2}
+{ans = false}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = O(1) is the worst case time complexity of dequeue in a queue containing M elements implemented using an array}
+{difficulty = 2}
+{ans = true}
+{score = 4}>
+
+
+<question
+{type = truefalse}
+{text = The tightest bound time complexity of function T(N) \= T(N/2) + 100 is O(N)}
+{difficulty = 8}
+{ans = false}
+{score = 4}>
+
+
+<question
+{type = truefalse}
+{text = Average case running time of Bubble sort is O(n log n)}
+{difficulty = 1}
+{ans = false}
+{score = 1}>
+
+
+<question
+{type = truefalse}
+{text = O(1), O(n), O(nlog n), O(n2) is the correct ascending order of time complexities (low to high time complexities)}
+{difficulty = 4}
+{ans = true}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = AVL Ttrees are variations of Binary Search Trees}
+{difficulty = 5}
+{ans = true}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = In a Binary Tree, a node may have a degree greater than 2}
+{difficulty = 3}
+{ans = false}
+{score = 1}>
+
+
+<question
+{type = truefalse}
+{text = Acyclic graphs do not have cycles}
+{difficulty = 5}
+{ans = false}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = In DFS, all the nodes adjacent to the current node are visited}
+{difficulty = 4}
+{ans = false}
+{score = 1}>
+
+
+<question
+{type = truefalse}
+{text =  	A self-referential structure contains a pointer member that points to a structure of the same structure type. For example, the following definition of structure node.
+                                            struct node
+                                            \{         
+                                             int data;
+                                             struct node *nextPtr;
+                                            \};}
+                                                             
+{difficulty = 8}
+{ans = false}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = Every node in a linked list has two components\: one to store the relevant information and one to store the address}
+{difficulty = 6}
+{ans = true}
+{score = 2}>
+
+
+<question
+{type = truefalse}
+{text = The address of the first node in a linked list is stored in a separate location//pointer, called the head}
+{difficulty = 7}
+{ans = true}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = The time complexity of adding 5 to each element of a array of N numbers is O(N)}
+{difficulty = 8}
+{ans = true}
+{score = 3}>
+
+
+<question
+{type = truefalse}
+{text = Let us suppose that there is a variable declaration int x \= 50, *ptr. Then, the statement *ptr \= &x is a valid statement in main() function}
+{difficulty = 8}
+{ans = false}
+{score = 4}>
+
+
+

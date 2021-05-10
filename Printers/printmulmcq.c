@@ -8,7 +8,8 @@
 #include "../Utils/parsers.h"
 #include "../Utils/readFile.h"
 #include "../Validators/mulmcqs.h"
-void printSingleCorrect_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
+extern int question_number;
+void printMultiple_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
 {
     // fseek(qb, offset, SEEK_SET);
     char *param, *value, *text;
@@ -87,16 +88,32 @@ void printSingleCorrect_MCQs(FILE *qb, FILE *outputPaper, FILE *outputAnswer)
         }
     }
 
-    fprintf(outputPaper, "Q) %s", text);
+    fprintf(outputPaper, "Q%d) %s", question_number, text);
     fprintf(outputPaper, "\t[score : %0.2f]\n\n", score);
 
     for (int i = 0; i < no_opt; i++)
     {
         fprintf(outputPaper, "%c) %s \n", 65 + i, opts[i]);
     }
-
+    fprintf(outputPaper,"\n");
+    fprintf(outputAnswer, "Q%d) \n", question_number);
     for (int i = 0; i < no_ans; i++)
     {
-        fprintf(outputAnswer, "%c) %s\n", 65 + i, anss[i]);
+        for (int j = 0; j < no_opt; j++)
+        {
+            if (strcmp(anss[i], opts[j]) == 0)
+            {
+                clean(anss[i]);
+                fprintf(outputAnswer, " %c) %s\n", 65 + j, anss[i]);
+            }
+        }
     }
+    fprintf(outputAnswer,"\n");
+    question_number++;
+    free(text);
+    for (int i = 0; i < no_ans; i++)
+        free(anss[i]);
+    for (int i = 0; i < no_opt; i++)
+        free(opts[i]);
+    free(opts);
 }

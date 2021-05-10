@@ -7,32 +7,6 @@
 #include "../Utils/parsers.h"
 #include "../Utils/readFile.h"
 extern vector vec_mul_mcq;
-void remove_spaces(char **c)
-{
-    int len = strlen(*c);
-    char *x = (char *)malloc(sizeof(char) * len);
-    int i = 0;
-    for (i = 0; i < len; i++)
-    {
-        if ((*c)[i] == ' ' || (*c)[i] == '\n')
-            continue;
-        break;
-    }
-    int j = 0;
-    for (j = len - 1; j >= 0; j--)
-    {
-        if ((*c)[j] == ' ' || (*c)[j] == '\n')
-        {
-            (*c)[j] = '\0';
-        }
-        else
-            break;
-    }
-    strcpy(x, &((*c)[i]));
-    strcpy(*c, x);
-    *c = (char *)realloc(*c, strlen(x));
-    free(x);
-}
 
 void mul_mcq_validator(FILE *fp, int id)
 {

@@ -1,0 +1,15 @@
+Q1) D) None of the above
+Q2) B) Delete an element
+Q3) C) main
+Q4) C) execute infinitely.
+Q5) 3.50
+Q6) 20.00
+Q7) 2.00
+Q8) 2.00
+Q9) 20.00
+Q10) 2.00
+Q11) 3.50
+Q12) FALSE
+Q12) FALSE
+Q12) TRUE
+Q12) TRUE

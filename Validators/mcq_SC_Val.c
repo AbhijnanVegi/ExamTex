@@ -12,36 +12,6 @@
 extern vector vec_single_C_mcq;
 // vector vec_single_C_mcq;
 
-// This function removes the spaces from the text so that the correct option maches with the one given in options...
-void remove_spaces(char **c)
-{
-    int len = strlen(*c);
-    char *x = (char *)malloc(sizeof(char) * len);
-    int i = 0;
-    for (i = 0; i < len; i++)
-    {
-        if ((*c)[i] == ' ' || (*c)[i] == '\n')
-            continue;
-        break;
-    }
-    int j = 0;
-    for (j = len - 1; j >= 0; j--)
-    {
-        if ((*c)[j] == ' ' || (*c)[j] == '\n')
-        {
-            (*c)[j] = '\0';
-        }
-        else
-            break;
-    }
-    strcpy(x, &((*c)[i]));
-    strcpy(*c, x);
-    *c = (char *)realloc(*c, strlen(x));
-    free(x);
-}
-
-// This is the actual validor function for validating the SINGLE CORRECT MCQ Questions...
-
 void validateSingleCorrect_MCQ(FILE *fp, int id)
 {
     // Declaring arrays to store parameters and values
@@ -50,7 +20,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
     char *value; // Stores the value of RHS of the = sign
 
     int parametersRead = 0;
-    int numberOfParametersRequired = 5;
+    // int numberOfParametersRequired = 5;
     // Required Parameters...
     // 1) Text
     // 2) Ans
@@ -58,19 +28,15 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
     // 4) Score
     // 5) Options
 
-    // for temporarily storing the Max Score and difficulty for a particular question...
     double score;
     double difficulty;
 
-    // Poiters used for storing correctOptions and Options for a Question...
-    char **anss, **opts;
-    anss = (char **)malloc(sizeof(char *) * 8);
-    opts = (char **)malloc(sizeof(char *) * 8);
+    char *anss, **opts;
+    //anss = (char **)malloc(sizeof(char *) * 8);
+    opts = (char **)malloc(sizeof(char *) * 9);
 
-    // Initialising all flags to 0...
     char text_flag = 0, diff_flag = 0, score_flag = 0, opt_flag = 0, ans_flag = 0;
 
-    // will keep a track of noOf Options and noOf correctAnwers provided by the user...
     int noOfOptions = 0, noOfAnswers = 0;
 
     parameterUnion newnode; // It is a temporary node to note the values
@@ -78,7 +44,6 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
 
     while (parseArgument(fp, &param, &value)) // It is a function defined in parser.h and it returns the LHS and RHS strings on '='
     {
-
         if (strcmp(param, "text") == 0)
         {
             //Do nothing as no validation is required for text
@@ -122,34 +87,9 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
             if (!ans_flag)
             {
                 ans_flag = 1;
-                int o = 0;
-                int j = 0;
-                anss[o] = (char *)malloc(sizeof(char) * strlen(value));
-                for (int i = 0; i < strlen(value); i++)
-                {
-                    if (value[i] != ':')
-                    {
-                        anss[o][j] = value[i];
-                        j++;
-                    }
-                    if (value[i] == ':')
-                    {
-                        anss[o][j] = '\0';
-                        remove_spaces(&anss[o]);
-                        o++;
-                        anss[o] = (char *)malloc(sizeof(char) * strlen(value));
-                        j = 0;
-                    }
-                }
-                anss[o][j] = '\0';
-                remove_spaces(&opts[o]);
-                noOfAnswers = o + 1;
-                // As the correct no. of answers for single corrcect mcq = 1...
-                if (noOfAnswers > 1)
-                {
-                    printf("Error on line number : %d : More than 1 options correct for Single Correct MCQ question which is not possible.", lineNumber);
-                    exit(1);
-                }
+                anss = (char *)malloc(strlen(value) + 1);
+                strcpy(anss, value);
+                remove_spaces(&anss);
             }
             else //Parameter already read, raise duplicate error
             {
@@ -184,7 +124,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
             {
                 int o = 0;
                 int j = 0;
-                opts[o] = (char *)malloc(sizeof(char) * strlen(value));
+                opts[o] = (char *)malloc(sizeof(char) * strlen(value) + 1);
                 for (int i = 0; i < strlen(value); i++)
                 {
                     if (value[i] != ':')
@@ -197,7 +137,11 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
                         opts[o][j] = '\0';
                         remove_spaces(&opts[o]);
                         o++;
-                        opts[o] = (char *)malloc(sizeof(char) * strlen(value));
+                        if (o == 8)
+                        {
+                            printf("Error! More than 8 options initialised in line number : %d\n", lineNumber);
+                        }
+                        opts[o] = (char *)malloc(sizeof(char) * strlen(value) + 1);
                         j = 0;
                     }
                 }
@@ -222,7 +166,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
         }
     }
     //Print the MISSING Parameters...
-    // And the respective ERROR messages...
+
     if (!opt_flag)
     {
         printf("Error! Not initialised options in line no : %d\n", lineNumber);
@@ -249,43 +193,25 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
         exit(1);
     }
 
-    // Store the difficulty, score and id...
     newnode.nd.diff = difficulty;
     newnode.nd.score = score;
 
-    // Already checked above that the no. of correct Options for single Corrcet MCQ = 1..
-    // In such a case an error message is printed ...
-    // So no need to change this code...
+    char ans_check_flag = 0;
 
-    char ans_check_flag[noOfAnswers];
-
-    for (int i = 0; i < noOfAnswers; i++)
-        ans_check_flag[i] = 0;
-    for (int i = 0; i < noOfAnswers; i++)
+    for (int j = 0; j < noOfOptions; j++)
     {
-        for (int j = 0; j < noOfOptions; j++)
+        if (strcmp(opts[j], anss) == 0)
         {
-            if (strcmp(opts[j], anss[i]) == 0)
-            {
-                ans_check_flag[i] = 1;
-                break;
-            }
+            ans_check_flag = 1;
+            break;
         }
     }
-    for (int i = 0; i < noOfAnswers; i++)
+    if (ans_check_flag == 0)
     {
-        if (ans_check_flag[i] == 0)
-        {
-            printf("Error! \" %s \" is part of answer but not part of options. Line number : %d\n", anss[i], lineNumber);
-        }
+        printf("\"%s\" is present in the answer but not in the questions. Line number : %d\n", anss, lineNumber);
     }
 
-    // Storing in the main vector by using push_back() function...
     push_back(&vec_single_C_mcq, newnode);
-
-    // Releasing the memory dynamically allocated to avoid memory leak...
-    for (int i = 0; i < noOfAnswers; i++)
-        free(anss[i]);
     for (int i = 0; i < noOfOptions; i++)
         free(opts[i]);
     free(anss);

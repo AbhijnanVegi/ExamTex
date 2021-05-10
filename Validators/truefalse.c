@@ -1,4 +1,5 @@
 
+////// I am not using flush function anywhere , I need to include it
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,8 +11,15 @@
 #include "../Utils/lineNumber.h"
 #include "../Utils/parsers.h"
 #include "../Utils/readFile.h"
-#include "truefalse.h"
 extern vector vec_tf;
+enum parameters
+{
+    TEXT,
+    OPT,
+    ANS,
+    DIFFICULTY,
+    SCORE
+};
 
 void validateTrueFalse(FILE *fp, int pos)
 {
@@ -117,14 +125,9 @@ void validateTrueFalse(FILE *fp, int pos)
     u.nd.score = score;
     push_back(&vec_tf, u);
     for (int i = 0; i < no_ans; i++)
-    {
         free(anss[i]);
-    }
     for (int i = 0; i < no_opt; i++)
-    {
         free(opts[i]);
-    }
     free(anss);
     free(opts);
 }
-

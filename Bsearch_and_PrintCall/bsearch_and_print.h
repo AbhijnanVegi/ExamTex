@@ -6,10 +6,9 @@
 #include <time.h>
 #include <stdbool.h>
 #include "../vector/vec.h"
-#include "print_output.h"
 
 
-void select_rand_q(vector *vec, int ub, int lb, int num_q, char *type, FILE *fp);
-void b_search(vector *vec, float diff_ub, float diff_lb, int num_q, char type[], FILE *fp);
+void select_rand_q(vector *vec, int ub, int lb, int num_q, char *type, FILE *fp, FILE* op, FILE* oa);
+void b_search(vector *vec, float diff_ub, float diff_lb, int num_q, char type[], FILE *fp, FILE* op,FILE* oa);
 
 #endif

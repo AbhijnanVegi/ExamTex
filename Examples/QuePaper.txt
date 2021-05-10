@@ -1,0 +1,10 @@
+<sample{type = oneword}{difflb = 0}{diffub = 2}{num = 4}>
+<sample{type = mul_mcq}{difflb = 3}{diffub = 4}{num = 5}>
+<sample{type = mcq}{difflb = 0}{diffub = 100}{num = 4}>
+<sample{type = numerical}{difflb = 0}{diffub = 100}{num = 7}>
+<sample{type = truefalse}{difflb = 0}{diffub = 100}{num = 4}>
+
+
+
+
+

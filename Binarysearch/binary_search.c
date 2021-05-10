@@ -3,16 +3,12 @@
 #include "binary_search.h"
 #include "../vector/vec.h"
 
-
-////////////This code implements binary search on float value of difficulties stored in vectors and returns the largest and smallest vector index that fall in the range of the required difficulty
-
-
 int binary_ub_search(vector *v, double upper_limit) //// This code returns the position of the largest element smaller than the upper bound
 {
     int lb = 0;
-    int ub = v->last - 1;
+    int ub = v->last;
     int mid;
-    int position = v->last - 1;
+    int position = v->last;
 
     while (lb <= ub)
     {
@@ -29,21 +25,21 @@ int binary_ub_search(vector *v, double upper_limit) //// This code returns the p
         }
     }
 
-    return position;
+    return position - 1;
 }
 
 int binary_lb_search(vector *v, double lower_limit) /// This func gives the position of smallest elemnt greater than the lower bound
 {
     int lb = 0;
-    int ub = v->last - 1;
+    int ub = v->last;
     int mid;
-    int position = v->last - 1;
+    double position = v->last - 1;
 
     while (lb <= ub)
     {
         mid = (lb + ub) / 2;
 
-        if (lower_limit >= v->u.nodeElems[mid].diff)
+        if (lower_limit > v->u.nodeElems[mid].diff)
         {
 
             lb = mid + 1;
@@ -55,5 +51,5 @@ int binary_lb_search(vector *v, double lower_limit) /// This func gives the posi
         }
     }
 
-    return position;
+    return position + 1;
 }

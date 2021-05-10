@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../vector/vec.h"
+#include "../vector/vec.h" //// contains vectors written by Shreyansh
 
 void merge(vector *vec, int l, int m, int r)
 {
@@ -81,34 +81,3 @@ void mergeSort(vector *vec, int l, int r)
         merge(vec, l, m, r);
     }
 }
-
-/*int main()
-{
-
-    vector V;
-    float n = 0, m = 0, p = 0;
-
-    V = allocate(NODE, 5);
-
-    for (int i = 0; i < 5; i++)
-    {
-        parameterUnion dummy;
-        scanf("%f %f %f", &n, &m, &p);
-        dummy.nd.diff = n;
-        dummy.nd.score = m;
-        dummy.nd.id = p;
-        push_back(&V, dummy);
-    }
-
-    mergeSort(&V, 0, 4);
-
-    for (int i = 0; i < 5; i++)
-    {
-
-        float n1 = V.u.nodeElems[i].diff;
-        float m1 = V.u.nodeElems[i].score;
-        float p1 = V.u.nodeElems[i].id;
-
-        printf("%f %f %f\n", n1, m1, p1);
-    }
-}*/
