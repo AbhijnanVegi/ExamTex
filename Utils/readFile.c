@@ -20,21 +20,23 @@ extern vector vec_tf;
 extern vector vec_oneword;
 
 int lineNumber;
+bool editLineNumber;
 
 void readQuestionBank(FILE *qb)
 {
     char *type;
     char *param;
     char *value;
-    lineNumber = 1;
+    lineNumber = 1; //Tracks line number
+    editLineNumber = true;
     while (parseType(qb, &type))
     {
-        if (strcmp(type, "question") != 0)
+        if (strcmp(type, "question") != 0)//Check if expected block is of type question
         {
             printf("Expected block of type 'question' at line number : %d in question bank file", lineNumber);
             exit(1);
         }
-        else
+        else //Check type of question and call corresponding validator
         {
             if (!parseArgument(qb, &param, &value) || strcmp(param, "type") != 0)
             {
@@ -43,9 +45,9 @@ void readQuestionBank(FILE *qb)
             }
             else if (strcmp(value, "mcq") == 0)
             {
-                int id = ftell(qb);
+                int id = ftell(qb);//Get current location of cursor
                 validateSingleCorrect_MCQ(qb, id);
-                free(param);
+                free(param);//Free all vectors in stack
                 free(value);
                 free(type);
             }
@@ -81,7 +83,7 @@ void readQuestionBank(FILE *qb)
                 free(value);
                 free(type);
             }
-            else
+            else //Invalid type of question
             {
                 printf("Invalid type of question at line number : %d in question bank file", lineNumber);
                 exit(1);
@@ -95,8 +97,8 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
     char *param;
     char *value;
     char *type;
-    lineNumber = 1;
-    enum parameters
+    lineNumber = 1;// Track line number
+    enum parameters // Enum for understandability
     {
         TYPE,
         DIFFUB,
@@ -110,25 +112,25 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
     char *qtype;
     double diffub, difflb;
     int num;
-    while (parseType(sp, &type))
+    while (parseType(sp, &type)) 
     {
-        parametersRead = 0;
+        parametersRead = 0;//Initialise all flags to false
         isParameterRead[TYPE] = false;
         isParameterRead[DIFFUB] = false;
         isParameterRead[DIFFLB] = false;
         isParameterRead[NUM] = false;
-        if (strcmp(type, "sample") != 0)
+        if (strcmp(type, "sample") != 0)//Check if type of block is sample
         {
             printf("Expected block of type 'sample' at line number : %d in sample paper file", lineNumber);
             exit(1);
         }
         else
         {
-            while (parseArgument(sp, &param, &value))
+            while (parseArgument(sp, &param, &value)) //Call parseArgument() until every param is read
             {
                 if (strcmp(param, "type") == 0)
                 {
-                    if (strcmp(value, "numerical") == 0) //fill it with other types
+                    if (strcmp(value, "numerical") == 0) //Check type of question
                     {
                         qtype = value;
                         isParameterRead[TYPE] = true;
@@ -178,6 +180,7 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
                         printf("Error on line number : %d : Upper bound on difficulty must be a float", lineNumber);
                         free(param);
                         free(value);
+                        exit(1);
                     }
                     isParameterRead[DIFFUB] = true;
                     parametersRead++;
@@ -189,6 +192,7 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
                         printf("Error on line number : %d : Lower bound on difficulty must be a float", lineNumber);
                         free(param);
                         free(value);
+                        exit(1);
                     }
                     isParameterRead[DIFFLB] = true;
                     parametersRead++;
@@ -200,6 +204,7 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
                         printf("Error on line number : %d : number of questions must be an integer", lineNumber);
                         free(param);
                         free(value);
+                        exit(1);
                     }
                     isParameterRead[NUM] = true;
                     parametersRead++;
@@ -228,7 +233,8 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
                 exit(1);
             }
             //Deal with finding and printing questions
-            if (strcmp(qtype, "numerical") == 0)
+            editLineNumber = false;
+            if (strcmp(qtype, "numerical") == 0)//Call bsearch depending on type of question
             {
                 b_search(&vec_numerical,diffub,difflb,num,qtype,qb,op,oa);
             }
@@ -248,6 +254,7 @@ void readSamplePaper(FILE* qb, FILE *sp, FILE *op, FILE *oa)
             {
                 b_search(&vec_mul_mcq,diffub,difflb,num,qtype,qb,op,oa);
             }
+            editLineNumber = true;
         }
     }
 }

@@ -10,25 +10,25 @@ extern vector vec_mul_mcq;
 
 void mul_mcq_validator(FILE *fp, int id)
 {
-    char *param, *value;
+    char *param, *value;//Initialise pointers for return values
     int count = 5;
-    char text_flag = 0, diff_flag = 0, score_flag = 0, opt_flag = 0, ans_flag = 0;
+    char text_flag = 0, diff_flag = 0, score_flag = 0, opt_flag = 0, ans_flag = 0;//Initialse all flags to false
     float diff, score;
     char **anss, **opts;
     anss = (char **)malloc(sizeof(char *) * 8);
     opts = (char **)malloc(sizeof(char *) * 8);
     int no_opt = 0, no_ans = 0;
     parameterUnion u;
-    u.nd.id = id;
-    while (parseArgument(fp, &param, &value))
+    u.nd.id = id;//Store id of the question
+    while (parseArgument(fp, &param, &value))//Call parseArgument() until all parameters are read
     {
-        if (strcmp(param, "text") == 0)
+        if (strcmp(param, "text") == 0) //Verify validity of input
         {
             if (!text_flag)
             {
                 text_flag = 1;
             }
-            else
+            else //Duplicate parameter
             {
                 printf("Error! Text initialised twice in line no : %d \n", lineNumber);
                 exit(1);
@@ -53,7 +53,7 @@ void mul_mcq_validator(FILE *fp, int id)
         }
         else if (strcmp(param, "ans") == 0)
         {
-            if (!ans_flag)
+            if (!ans_flag) //Split options to verify later
             {
                 ans_flag = 1;
                 int o = 0;
@@ -87,7 +87,7 @@ void mul_mcq_validator(FILE *fp, int id)
         }
         else if (strcmp(param, "opt") == 0)
         {
-            if (!opt_flag)
+            if (!opt_flag) //SPlit options for verification
             {
                 opt_flag = 1;
                 int o = 0;
@@ -127,6 +127,7 @@ void mul_mcq_validator(FILE *fp, int id)
                 if (sscanf(value, "%f", &score) != 1)
                 {
                     printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                    exit(1);
                 }
             }
             else
@@ -138,6 +139,7 @@ void mul_mcq_validator(FILE *fp, int id)
         else
         {
             printf("Unknown parameter '%s' on line number : %d", param, lineNumber);
+            exit(1);
         }
     }
     if (!opt_flag)
@@ -166,7 +168,7 @@ void mul_mcq_validator(FILE *fp, int id)
         exit(1);
     }
 
-    char ans_check_flag[no_ans];
+    char ans_check_flag[no_ans]; //verify validity of ans and opt
     for (int i = 0; i < no_ans; i++)
         ans_check_flag[i] = 0;
     for (int i = 0; i < no_ans; i++)
@@ -189,8 +191,8 @@ void mul_mcq_validator(FILE *fp, int id)
     }
     u.nd.diff = diff;
     u.nd.score = score;
-    push_back(&vec_mul_mcq, u);
-    for (int i = 0; i < no_ans; i++)
+    push_back(&vec_mul_mcq, u);//Save question
+    for (int i = 0; i < no_ans; i++)//Free all pointers
         free(anss[i]);
     for (int i = 0; i < no_opt; i++)
         free(opts[i]);

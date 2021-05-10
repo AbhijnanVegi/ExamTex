@@ -1,4 +1,3 @@
-//Updated...
 #include "validateOneWord.h"
 #include <string.h>
 #include <stdlib.h>
@@ -7,8 +6,7 @@
 #include "../Utils/lineNumber.h"
 #include "../Utils/parsers.h"
 #include "../Utils/readFile.h"
-// More header fles are to be included...
-// Already included...
+
 extern vector vec_oneword;
 
 void validateOneWord(FILE *fp, int id)
@@ -70,7 +68,7 @@ void validateOneWord(FILE *fp, int id)
                 diff_flag = 1;
                 if (sscanf(value, "%f", &diff) != 1)
                 {
-                    printf("Error on line number : %d, Answer must be decimal", lineNumber);
+                    printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
                     exit(1);
                 }
             }
@@ -87,7 +85,8 @@ void validateOneWord(FILE *fp, int id)
                 score_flag = 1;
                 if (sscanf(value, "%f", &score) != 1)
                 {
-                    printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                    printf("Error on line number : %d, Score must be decimal", lineNumber);
+                    exit(1);
                 }
             }
             else

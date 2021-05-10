@@ -1,0 +1,4 @@
+<question{type = numerical}{text = What is 2x\{5+5\}}{ans = 20}{difficulty = 1.5}{score = 1.2}>
+<question{type = numerical}{text = Find the avg of 2,3,4,5}{ans = 3.5}{difficulty = 2}{score = 2}>
+<question{type = numerical}{text = Find the number of missing HTML tags in \<br\>\<span\>\<a\>\</br\>}{ans = 2}{difficulty = 3.2}{score = 1}>
+<question{type = numerical}{text = Number of elemnts in the set $A \= \\\{1,2,3,4,5\\\}$}{ans = 2}{difficulty = 1}{score = 2}>
