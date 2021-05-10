@@ -24,9 +24,9 @@ Add your name below just to check if you can edit
 ```
 
 Project by:  
-- Abhijnan Vegi
-- Pratyush Mohanty
-- Keerthi Pothalaraju
-- Shreyansh Agarwal
-- V.N.M.Sumanth
+- [Abhijnan Vegi](github.com/AbhijnanVegi)
+- [Pratyush Mohanty](https://github.com/PratyushMohanty-GHub)
+- [Keerthi Pothalaraju](https://github.com/Itreek)
+- [Shreyansh Agarwal](https://github.com/coolshr)
+- [V.N.M.Sumanth](https://github.com/sumanth-vnm)
 
