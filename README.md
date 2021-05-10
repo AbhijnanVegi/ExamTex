@@ -17,7 +17,7 @@ Add your name below just to check if you can edit
   cmake -S .
   make
   ```
-###Alternative Installation
+### Alternative Installation
 Run the following command after cloning the repository
 ```
 cd ./DSA-Mini-Project
