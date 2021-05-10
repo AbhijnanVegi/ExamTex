@@ -72,6 +72,7 @@ void validateTrueFalse(FILE *fp, int pos)
                 if (strcmp(value, "true") != 0 && strcmp(value, "false") != 0)
                 {
                     printf("Error! Answer can only be \"true\" or \"false\". Line Number : %d\n ", lineNumber);
+                    exit(1);
                 }
             }
             else
@@ -88,6 +89,7 @@ void validateTrueFalse(FILE *fp, int pos)
                 if (sscanf(value, "%f", &score) != 1)
                 {
                     printf("Error on line number : %d, Difficulty must be decimal", lineNumber);
+                    exit(1);
                 }
             }
             else
@@ -99,6 +101,7 @@ void validateTrueFalse(FILE *fp, int pos)
         else
         {
             printf("Unknown parameter '%s' on line number : %d", param, lineNumber);
+            exit(1);
         }
     }
     if (!ans_flag)

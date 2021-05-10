@@ -105,6 +105,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
                 if (sscanf(value, "%lf", &score) != 1)
                 {
                     printf("Error on line number : %d, Score must be decimal", lineNumber);
+                    exit(1);
                 }
 
                 // Read parameter
@@ -140,6 +141,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
                         if (o == 8)
                         {
                             printf("Error! More than 8 options initialised in line number : %d\n", lineNumber);
+                            exit(1);
                         }
                         opts[o] = (char *)malloc(sizeof(char) * strlen(value) + 1);
                         j = 0;
@@ -163,6 +165,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
         else
         {
             printf("Unknown parameter '%s' on line number : %d", param, lineNumber);
+            exit(1);
         }
     }
     //Print the MISSING Parameters...
@@ -209,6 +212,7 @@ void validateSingleCorrect_MCQ(FILE *fp, int id)
     if (ans_check_flag == 0)
     {
         printf("\"%s\" is present in the answer but not in the questions. Line number : %d\n", anss, lineNumber);
+        exit(1);
     }
 
     push_back(&vec_single_C_mcq, newnode);

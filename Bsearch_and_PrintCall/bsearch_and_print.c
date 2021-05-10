@@ -10,6 +10,7 @@
 #include "../Printers/printNumerical.h"
 #include "../Printers/printTF.h"
 #include "../Printers/printerOneWord.h"
+#include "../Utils/lineNumber.h"
 
 extern vector vec_mul_mcq;
 extern vector vec_numerical;
@@ -25,7 +26,7 @@ void select_rand_q(int ub, int lb, int num_q, char *type, FILE *qb, FILE *op, FI
     FILE *outputQP = op;
     FILE *outputANS = oa;
 
-    if (strcmp(type, "numerical") == 0) /////They have been divided accordingly so that we can call the neccessary input files
+    if (strcmp(type, "numerical") == 0) //Check the type of question, seek and print the question accordingly
     {
         srand(time(0));
         for (int i = 0; i < num_q; i++)
@@ -59,7 +60,7 @@ void select_rand_q(int ub, int lb, int num_q, char *type, FILE *qb, FILE *op, FI
             index = vec_mul_mcq.u.nodeElems[lb + m].id;
             fseek(qb, index, SEEK_SET);
 
-            printMultiple_MCQs(qb, outputQP, outputANS); ///////////Need to change the names of functions
+            printMultiple_MCQs(qb, outputQP, outputANS); 
         }
     }
     if (strcmp(type, "truefalse") == 0)
@@ -83,14 +84,14 @@ void select_rand_q(int ub, int lb, int num_q, char *type, FILE *qb, FILE *op, FI
             index = vec_oneword.u.nodeElems[lb + m].id;
             fseek(qb, index, SEEK_SET);
 
-            printOneWord(qb, outputQP, outputANS); //////////////////////////
+            printOneWord(qb, outputQP, outputANS);
         }
     }
 }
 
 void b_search(vector *vec, float diff_ub, float diff_lb, int num_q, char type[], FILE *fp, FILE *op, FILE *oa)
 {
-
+    //Find bounds for question based on difficulties
     int pos_ub = 0;
     int pos_lb = 0;
     pos_ub = binary_ub_search(vec, diff_ub);
@@ -98,10 +99,11 @@ void b_search(vector *vec, float diff_ub, float diff_lb, int num_q, char type[],
 
     if (pos_ub >= 0 && pos_lb <= size(vec) - 1 && pos_lb <= pos_ub)
     {
-        select_rand_q(pos_ub, pos_lb, num_q, type, fp, op, oa);
+        select_rand_q(pos_ub, pos_lb, num_q, type, fp, op, oa);//Print a random question
     }
     else
     {
-        printf("Invalid bounds for difficulty\n");
+        printf("Error on line number : %d, Invalid bounds for difficulty\n",lineNumber);
+        exit(1);
     }
 }
